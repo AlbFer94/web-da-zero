@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prenota un Tavolo | The Pixel & Bean Café</title>
+  <link rel="stylesheet" href="../style/styles.css">
+</head>
+
+<body>
+  <!-- =======================================================================
+         SEZIONE 1: HEADER & NAVIGAZIONE DI RITORNO
+         - Scopo: Intestazione con link per tornare alla pagina principale index.html.
+    ======================================================================== -->
+
+  <header id="nav-bar">
+    <nav class="nav-container">
+      <span id="logo"><a href="./index.html">Pixel & Bean Café</a></span>
+      <a class="nav-link" href="./index.html">← Torna alla Home</a>
+    </nav>
+  </header>
+
+
+  <!-- =======================================================================
+         SEZIONE 2: MAIN (CONTENITORE PRINCIPALE PRENOTAZIONI)
+         - Scopo: Contenuto centrale dedicato alla prenotazione e alle regole.
+    ======================================================================== -->
+  <main>
+
+    <!-- -------------------------------------------------------------------
+             SOTTO-SEZIONE 2.1: INTRODUZIONE DELLA PAGINA
+             - Scopo: Spiegare all'utente a cosa serve il form e i tempi di risposta.
+        -------------------------------------------------------------------- -->
+    <section id="intro-prenota">
+      <h1>Prenota il tuo Tavolo da Gioco</h1>
+      <p>Pronto a schierare la tua squadra sul tabellone? Compila il modulo qui sotto per assicurarti la postazione
+        perfetta. Ti invieremo una <strong>conferma di prenotazione entro 2 ore</strong> via email o WhatsApp.
+        Se hai già un titolo in mente o vuoi organizzare una campagna GDR, faccelo sapere nelle note: faremo trovare
+        <i>tabellone, carte e miniature già pronti al tuo arrivo!</i>
+      </p>
+    </section>
+
+
+    <!-- -------------------------------------------------------------------
+             SOTTO-SEZIONE 2.2: IL MODULO DI PRENOTAZIONE (FORM)
+             - Scopo: Raccogliere le informazioni di prenotazione dall'utente.
+        -------------------------------------------------------------------- -->
+    <section id="form">
+      <form action="#" method="post">
+        <div class="userInfo">
+          <h2>1. I Tuoi Dati di Contatto</h2>
+          <label for="fname">Nome *:</label>
+          <input type="text" id="fname" name="fname" placeholder="Es: Mario" required />
+          <label for="lname">Cognome:</label>
+          <input type="text" id="lname" name="lname" placeholder="Es: Rossi" />
+          <label for="email">Email di conferma *:</label>
+          <input type="email" id="email" name="email" placeholder="nome@esempio.it" required />
+          <label for="phone">Telefono / WhatsApp *:</label>
+          <input type="tel" id="phone" name="phone" pattern="^[0-9]{10,11}$" placeholder="Es: 3331234567" required />
+        </div>
+
+        <div class="Data">
+          <h2>2. Dettagli della Sessione</h2>
+          <label for="date">Scegli la data del tavolo *:</label>
+          <input type="date" name="date" id="date" required />
+          <label for="ospiti">Numero di avventurieri (1-8 persone):</label>
+          <input type="number" id="ospiti" name="ospiti" min="1" max="8" value="2" />
+          <label for="favGame">Gioco desiderato o genere preferito:</label>
+          <input type="text" name="favGame" id="favGame" placeholder="Es: Catan, Wingspan, GDR o consigliaci tu!" />
+          <label for="accetto">
+            <input type="checkbox" name="accetto" id="accetto" required />
+            Dichiaro di aver letto e accettato il <a href="#regole"><u>Regolamento del Tavolo</u></a> *
+          </label>
+          <label for="specialRequest">Note speciali, allergie alimentari o richieste per il Game Master:</label>
+          <textarea id="specialRequest" name="specialRequest" rows="4" cols="50"
+            placeholder="Segnala intolleranze alimentari, se necessitate della spiegazione regole o se avete richieste particolari per la postazione."></textarea>
+          <input type="submit" name="Prenota" id="submit" value="Conferma la Prenotazione" />
+          <input type="reset" name="reset" id="reset" value="Resetta Campi" />
+        </div>
+      </form>
+    </section>
+
+
+    <!-- -------------------------------------------------------------------
+             SOTTO-SEZIONE 2.3: REGOLAMENTO RAPIDO & RECAPITI (SIDEBAR O CARD)
+             - Scopo: Informazioni utili collaterali al form per chi prenota.
+        -------------------------------------------------------------------- -->
+    <section id="regole">
+      <article class="rules-card">
+        <h3>Regole del Tavolo & Buone Maniere</h3>
+        <p>Per garantire a tutta la community un'esperienza memorabile e preservare l'integrità della nostra ludoteca di
+          oltre 300 scatole, ti chiediamo di seguire queste <strong>semplici linee guida</strong>:</p>
+        <ul>
+          <li><strong>Tolleranza Ritardo (15 Minuti):</strong> Il tavolo rimane riservato per un massimo di <i>15 minuti
+              oltre l'orario stabilito</i>. In caso di contrattempo, avvisaci con un messaggio rapido!</li>
+          <li><strong>Cura dei Giochi:</strong> Carte imbustate, plance e meeple sono un patrimonio comune. Trattali con
+            rispetto e <u>tieni bibite e snack a distanza di sicurezza</u> dall'area di gioco.</li>
+          <li><strong>Consumazioni Esterne Vietate:</strong> Non è consentito introdurre cibi o bevande dall'esterno. La
+            nostra micro-roastery e la bakery artigianale sono pronte a rifocillarti: scopri in anteprima il nostro <a
+              href="./index.html#menu"><strong>Menu di Specialty Coffee & Food</strong></a>.</li>
+          <li><strong>Setup & Regole Facili:</strong> Hai scelto una novità ma non vuoi passare un'ora sui manuali? Il
+            nostro Game Master è a disposizione per spiegarti le regole in 5 minuti.</li>
+        </ul>
+      </article>
+
+      <aside class="quick-contact">
+        <h3>Serve Aiuto Immediato?</h3>
+        <p>Devi organizzare un torneo, un compleanno o una sessione per un <strong>gruppo superiore a 8
+            persone</strong>?
+          Contattaci subito telefonicamente al <strong>02 98765432</strong> o scrivici via email a
+          <i>info@pixelbeancafe.it</i>.
+        </p>
+      </aside>
+    </section>
+
+
+    <!-- -------------------------------------------------------------------
+             SOTTO-SEZIONE 2.4: RECENSIONI & FEEDBACK DELLA COMMUNITY (SOCIAL PROOF)
+             - Scopo: Rassicurare gli utenti mostrando le recensioni di chi ha già giocato al bistrot.
+        -------------------------------------------------------------------- -->
+    <section id="reviews">
+      <h2>Cosa Dicono i Nostri Avventurieri</h2>
+      <p>Oltre 500 sessioni ospitate e migliaia di dadi tirati: ecco i feedback autentici della nostra community.</p>
+
+      <div class="reviews-container">
+        <!-- Recensione 1 -->
+        <article class="review-card">
+          <div class="review-header">
+            <h4>Elena "LadyMeeple" V.</h4>
+            <span class="rating">⭐⭐⭐⭐⭐ <i>(20 Naturale!)</i></span>
+          </div>
+          <blockquote>
+            "Il miglior rifugio a Milano per giocare a Wingspan e Terraforming Mars senza l'ansia del timer. Il caffè
+            filtro Yirgacheffe estratto in V60 è un capolavoro aromatico: mai bevuto un caffè così floreale. Il Game
+            Master
+            ci ha fatto il setup in 5 minuti risparmiandoci un'ora di manuale!"
+          </blockquote>
+          <p class="review-meta"><strong>Esperienza:</strong> <i>Pomeriggio Eurogame & V60 Pour-over</i></p>
+        </article>
+
+        <!-- Recensione 2 -->
+        <article class="review-card">
+          <div class="review-header">
+            <h4>Marco "DungeonCrawler" T.</h4>
+            <span class="rating">⭐⭐⭐⭐⭐ <i>(Tiro Salvezza Superato)</i></span>
+          </div>
+          <blockquote>
+            "Sessione epica di D&D durata 5 ore al tavolo grande. Sedute ultra comode, bagel al salmone freschissimo e
+            il
+            Nitro Cold Brew dà letteralmente punti mana infiniti. Prenotazione online confermata in meno di un'ora,
+            staff
+            preparatissimo."
+          </blockquote>
+          <p class="review-meta"><strong>Esperienza:</strong> <i>Campagna GDR Serale & Bakery Artigianale</i></p>
+        </article>
+
+        <!-- Recensione 3 -->
+        <article class="review-card">
+          <div class="review-header">
+            <h4>Sara & la Compagnia "Just One"</h4>
+            <span class="rating">⭐⭐⭐⭐⭐ <i>(Critico Perfetto)</i></span>
+          </div>
+          <blockquote>
+            "Siamo venuti in 8 per una serata party game: atmosfera calda, zero caos da pub convenzionale e una
+            selezione
+            di scatole infinita. Il Cinnamon Roll caldo servito al tavolo tra un round e l'altro ha conquistato tutti."
+          </blockquote>
+          <p class="review-meta"><strong>Esperienza:</strong> <i>Serata Party Game & Merenda da Forno</i></p>
+        </article>
+      </div>
+
+      <div class="leave-review">
+        <p>Sei già passato a trovarci? <strong>La tua recensione fa salire di livello la nostra gilda!</strong>
+          Condividi la tua esperienza su Google o inviaci i tuoi consigli per migliorare la nostra collezione.</p>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- =======================================================================
+         SEZIONE 3: FOOTER (PIÈ DI PAGINA)
+    ======================================================================== -->
+  <footer>
+    <div>
+      <p><strong>The Pixel & Bean Café</strong> — <i>Specialty Coffee, Board Games & Good Vibes</i></p>
+      <p>📍 Via dei Dadi Spezzati 42, Milano | ⏰ Mar - Dom: 10:00 - 00:30 (Chiuso il Lunedì)</p>
+      <p>📞 02 98765432 | ✉️ info@pixelbeancafe.it</p>
+      <p><u>Nota:</u> I nostri chicchi provengono esclusivamente da coltivazioni etiche a commercio diretto.
+      </p>
+      <p>© 2026 The Pixel & Bean Café. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+
+
+</body>
+
+</html>
