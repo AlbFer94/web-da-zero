@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>The Pixel & Bean Café</title>
+     <!-- Collegamento al foglio di stile CSS -->
+     <link rel="stylesheet" href="../style/styles.css">
+</head>
+
+<body>
+
+     <!-- =======================================================================
+         SEZIONE 1: HEADER & NAVIGAZIONE
+         - Scopo: Intestazione del sito visibile in cima alla pagina.
+         - Tag semantici da usare: <header>, <nav>
+         - Altri tag: <span> per il logo/nome bistrot, <a> per i link
+    ======================================================================== -->
+     <header id="nav-bar">
+          <span id="logo"><a href="./index.html">Pixel & Bean Café</a></span>
+          <nav class="nav-container">
+               <a class="nav-link" href="#vision">La Vision</a>
+               <a class="nav-link" href="#menu">Menu & Specialty</a>
+               <a class="nav-link" href="#giochi">Ludoteca</a>
+               <a class="nav-link" href="./prenota.html">Prenota</a>
+          </nav>
+     </header>
+
+     <main>
+          <!-- -------------------------------------------------------------------
+             SOTTO-SEZIONE 2.1: HERO / INTRODUZIONE
+             - Scopo: Prima schermata d'impatto con titolo principale e benvenuto.
+             - Tag semantico: <section>
+        -------------------------------------------------------------------- -->
+          <section id="hero">
+               <h1>The Pixel & Bean Café: Specialty Coffee & Giochi da Tavolo</h1>
+               <div class="hero-card">
+                    <p>Al Pixel & Bean abbiamo una regola d'oro: <strong>spegni le notifiche, accendi la mente</strong>.
+                         Siamo un bistrot indipendente nato per chi ama il profumo dello <i>specialty coffee tostato
+                              fresco</i>, il rumore dei dadi sul feltro e l'atmosfera intramontabile del <u>retrogaming
+                              d'autore</u>. Che tu sia qui per una sessione epica di D&D o per un'estrazione filtro a
+                         regola d'arte, <strong>hai trovato la tua seconda casa</strong>.</p>
+                    <img src="../assets/img/cafe-hero.jpg" alt="Interno accogliente del Pixel & Bean Café" />
+                    <a href="./prenota.html">Prenota tavolo</a>
+               </div>
+          </section>
+
+
+          <!-- -------------------------------------------------------------------
+             SOTTO-SEZIONE 2.2: FILOSOFIA & SPECIALTY COFFEE
+             - Scopo: Presentare l'esperienza del locale e i prodotti artigianali.
+             - Tag semantico: <section>, <article>
+        -------------------------------------------------------------------- -->
+          <section id="vision">
+               <article>
+                    <h2>L'Esperienza al Bistrot: Rallentare con Gusto</h2>
+                    <p>In un mondo che va a 120 FPS, noi preferiamo il <strong>tempo lento dell'analogico</strong>.
+                         Il nostro bistrot è uno spazio sicuro progettato per radunare community, creare nuove amicizie
+                         e riscoprire il piacere tattile di una plancia di legno o di una tazza calda servita a
+                         temperatura perfetta.
+                         Nessun timer sui tavoli, zero bibite zuccherate industriali: solo ottima compagnia, lievitati
+                         da forno artigianale e chicchi d'eccellenza eticamente sostenibili.</p>
+                    <h3>Selezione Chicchi Single-Origin & Micro-Roastery</h3>
+                    <p>Trattiamo solo <i>caffè di specialità 100% tracciabili</i>, coltivati ad alta quota da piccole
+                         cooperative e tostati con un profilo medio-chiaro per preservare la complessa mappa aromatica del terroir
+                         di origine.
+                         Dimentica l'espresso bruciato e amaro: ogni singola tazza al Pixel & Bean sprigiona una
+                         vibrante acidità citrica, dolcezze floreali e note cioccolatose estratte meticolosamente tramite <strong>V60, Aeropress o
+                              Cold Brew</strong>.</p>
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80"
+                         alt="Specialty coffee in estrazione V60 artigianale" />
+               </article>
+          </section>
+
+
+          <!-- -------------------------------------------------------------------
+             SOTTO-SEZIONE 2.3: LISTINO PREZZI & MENU (FLEXBOX CONTAINERS)
+             - Scopo: Mostrare il menu di bevande/snack con card flessibili.
+             - Tag semantico contenitore: <section id="menu">
+        -------------------------------------------------------------------- -->
+          <section id="menu">
+               <div class="menu-container">
+                    <article class="menu-card">
+                         <h4 class="item-name">Filter Brew: Yirgacheffe Monorigine</h4>
+                         <span class="item-price"><strong>€ 4.50</strong></span>
+                         <p class="description">Singola origine etiope coltivata a 2.100m slm, lavorazione a umido
+                              (washed). Estratto al momento con metodo manuale V60 per esaltare chiarezza e corpo
+                              setoso.</p>
+                         <h5 class="moreInfo">Note di Degustazione & Profilo:</h5>
+                         <p>Bouquet floreale di gelsomino, bergamotto candito e un finale pulito di pesca bianca.
+                              <i>Abbinamento consigliato: eurogame di strategia o sessioni di worldbuilding.</i>
+                         </p>
+                    </article>
+
+                    <article class="menu-card">
+                         <h4 class="item-name">Espresso "Critical Hit" 8-Bit</h4>
+                         <span class="item-price"><strong>€ 2.80</strong></span>
+                         <p class="description">Doppio shot estratto su macchina a leva manuale. Blend stagionale
+                              composto per il 60% da Colombia naturale e 40% da Brasile pulped-natural.</p>
+                         <h5 class="moreInfo">Note di Degustazione & Profilo:</h5>
+                         <p>Crema elastica e tigrata, corpo sciropposo con note di fava di cacao, nocciola tostata e
+                              caramello salato. Ideale per un boost di concentrazione a inizio partita.</p>
+                    </article>
+
+                    <article class="menu-card">
+                         <h4 class="item-name">Mana Potion: Nitro Cold Brew & Tonic</h4>
+                         <span class="item-price"><strong>€ 5.00</strong></span>
+                         <p class="description">Caffè monorigine estratto a freddo per 16 ore, infuso con azoto
+                              alimentare per un effetto vellutato alla spina, unito ad acqua tonica botanica e scorza
+                              d'arancia amara.</p>
+                         <h5 class="moreInfo">Note di Degustazione & Profilo:</h5>
+                         <p>Effervescenza naturale, freschezza dissetante con retrogusto agrumato e sentori di luppolo
+                              dolce. <i>100% analcolico, vegano e senza zuccheri aggiunti.</i></p>
+                    </article>
+
+                    <article class="menu-card">
+                         <h4 class="item-name">D20 Cinnamon Roll Artigianale</h4>
+                         <span class="item-price"><strong>€ 3.80</strong></span>
+                         <p class="description">Lievitato a lenta maturazione naturale di 24 ore con pasta madre viva,
+                              farcito con cannella di Ceylon, zucchero muscovado e glassa leggera al formaggio fresco.
+                         </p>
+                         <h5 class="moreInfo">Consigli del Pasticcere:</h5>
+                         <p>Soffice, caldo e profumato. Formulato per non ungere le dita: perfetto da gustare senza
+                              rischiare di macchiare carte o miniature sul tavolo da gioco!</p>
+                    </article>
+
+                    <article class="menu-card">
+                         <h4 class="item-name">Bagel "Side Quest" al Salmone Gravlax</h4>
+                         <span class="item-price"><strong>€ 7.50</strong></span>
+                         <p class="description">Bagel artigianale ai semi di papavero e sesamo tostato, salmone marinato
+                              da noi all'aneto e bacche di ginepro, crema di formaggio agli agrumi e cetriolini in
+                              agrodolce.</p>
+                         <h5 class="moreInfo">Abbinamento del Bistrot:</h5>
+                         <p>Sapido, bilanciato e ricco di energia sana per sostenere una campagna di D&D fino a tarda
+                              sera. <i>Disponibile anche in variante vegan con tofu affumicato.</i></p>
+                    </article>
+
+                    <div class="disclaimer">
+                         <h6>Avvertenze su Allergeni & Intolleranze Alimentari</h6>
+                         <p>La tua sicurezza al tavolo per noi vale più di un tiro salvezza riuscito! Le nostre
+                              preparazioni
+                              possono contenere o venire a contatto con <strong>glutine, latte e derivati, frutta a
+                                   guscio, sesamo, pesce e soia</strong>. Se hai allergie, celiachia o esigenze alimentari
+                              specifiche,
+                              <u>parlane sempre con il nostro staff al bancone</u> prima di ordinare: saremo felici di
+                              consultare
+                              il registro ingredienti dettagliato e consigliarti le opzioni più sicure e i latti
+                              vegetali alternativi.
+                         </p>
+                    </div>
+               </div>
+          </section>
+
+
+          <!-- -------------------------------------------------------------------
+             SOTTO-SEZIONE 2.4: LUDOTECA & REGOLE (LISTE ORDINATE E NON ORDINATE)
+             - Scopo: Mostrare la guida su come iniziare a giocare e i giochi del mese.
+             - Tag semantici: <section>, <article>
+        -------------------------------------------------------------------- -->
+          <section id="giochi">
+               <div class="giochi-container">
+                    <article class="rules">
+                         <h2>La Ludoteca del Pixel & Bean</h2>
+                         <p>Oltre 300 titoli a catalogo, dai classici intramontabili ai giochi da tavolo moderni più
+                              premiati al mondo.</p>
+                         <h3>Come Funziona il Tavolo da Gioco (in 4 mosse):</h3>
+
+                         <ol>
+                              <li><strong>Scegli la tua postazione:</strong> Riserva online o chiedi al bancone se c'è
+                                   un tavolo libero.</li>
+                              <li><strong>Consulta il catalogo:</strong> Sfoglia la nostra libreria suddivisa per
+                                   difficoltà, durata e numero di giocatori.</li>
+                              <li><strong>Fatti spiegare le regole:</strong> Il nostro Game Master di sala è sempre
+                                   pronto a fare il setup e spiegarti il regolamento in 5 minuti.</li>
+                              <li><strong>Ordina al tavolo:</strong> Ricarica i tuoi punti mana con specialty coffee, tè
+                                   biologici e snack dolci o salati.</li>
+                         </ol>
+                    </article>
+
+                    <article class="gameList">
+                         <h3>I giochi da tavolo più richiesti</h3>
+                         <ul>
+                              <li><strong>Catan & Ticket to Ride:</strong> Grandi classici perfetti per rompere il
+                                   ghiaccio tra amici.</li>
+                              <li><strong>Wingspan & Terraforming Mars:</strong> Per gli strateghi che amano le combo e
+                                   la pianificazione millimetrica.</li>
+                              <li><strong>Codenames & Just One:</strong> Party game rapidi per gruppi numerosi e risate
+                                   garantite.</li>
+                         </ul>
+                    </article>
+               </div>
+          </section>
+
+
+          <!-- -------------------------------------------------------------------
+             SOTTO-SEZIONE 2.5: INVITO ALL'AZIONE (CTA PRENOTAZIONE)
+             - Scopo: Spingere l'utente a visitare la seconda pagina del sito.
+             - Tag da usare: <section>, <h2> o <h3>, <p>, <a> (link a prenota.html)
+        -------------------------------------------------------------------- -->
+          <section id="cta">
+               <h2>Pronto a lanciare la sfida?</h2>
+               <p>I tavoli serali e del weekend si riempiono rapidamente. Prenota il tuo posto in anticipo per essere
+                    sicuro di trovare il tuo gioco preferito pronto sul tabellone.</p>
+               <a href="./prenota.html">Prenota Ora il tuo Tavolo!</a>
+          </section>
+     </main>
+
+     <!-- =======================================================================
+         SEZIONE 3: FOOTER (PIÈ DI PAGINA)
+         - Scopo: Chiusura della pagina con informazioni di contatto e copyright.
+         - Tag semantico da usare: <footer>
+    ======================================================================== -->
+     <footer>
+          <div>
+               <p><strong>The Pixel & Bean Café</strong> — <i>Specialty Coffee, Board Games & Good Vibes</i></p>
+               <p>📍 Via dei Dadi Spezzati 42, Milano | ⏰ Mar - Dom: 10:00 - 00:30 (Chiuso il Lunedì)</p>
+               <p>📞 02 98765432 | ✉️ info@pixelbeancafe.it</p>
+               <p><u>Nota:</u> I nostri chicchi provengono esclusivamente da coltivazioni etiche a commercio diretto.
+               </p>
+               <p>© 2026 The Pixel & Bean Café. Tutti i diritti riservati.</p>
+          </div>
+     </footer>
+
+</body>
+
+</html>
