@@ -1,0 +1,673 @@
+/* ==========================================================================
+   THE PIXEL & BEAN CAFÉ — GUIDA CONCETTUALE AL FOGLIO DI STILE (styles.css)
+   ==========================================================================
+   ISTRUZIONI PER LO SVILUPPATORE:
+   In questo file non è presente codice pre-compilato. Ogni sezione contiene
+   i requisiti, i selettori consigliati e i concetti CSS da applicare.
+   Segui le sezioni in ordine, implementando le proprietà suggerite.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. RESET, BOX-SIZING & SETUP GLOBALE
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Garantire che tutti i browser calcolino le dimensioni degli elementi allo
+   stesso modo e azzerare i margini predefiniti che creano disallineamenti.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Selettore universale (*, *::before, *::after):
+     * Imposta il modello di calcolo 'border-box' in modo che padding e bordi
+       siano compresi nella larghezza (width) e altezza (height) totali.
+   - Selettore per body, titoli (h1-h6), paragrafi (p) e liste (ul, ol):
+     * Azzera margini (margin: 0) e padding (padding: 0) predefiniti.
+   - Selettore body:
+     * Assegna la famiglia tipografica principale (es. 'Outfit' o 'Plus Jakarta Sans',
+       con fallback sans-serif).
+     * Imposta un'altezza di riga confortevole (tra 1.5 e 1.6) per la leggibilità.
+     * Applica il colore di sfondo scuro principale e il colore del testo chiaro.
+     * Assicurati che l'altezza minima sia l'intera viewport (min-height: 100vh).
+   - Selettore immagini (img):
+     * Rendi le immagini responsive impostando larghezza massima al 100%
+       (max-width: 100%) e visualizzazione a blocco (display: block) per evitare
+       spazi vuoti sul fondo.
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-main: #23272a;
+  --bg-surface: #3a3b3c;
+  --main-font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-serif-modern: "Charter", "Bitstream Charter", "Sitka Text", "Cambria", Georgia, serif;
+  --font-grotesk: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /*Accenti Tematici */
+  --primary-amber: #ffb703;
+  --accent-brick: #b85d43;
+  --accent-wood: #6f5643;
+  /*Contrasto Testi */
+  --coffee-cream: #fdfbf7;
+  --text-muted: #e5e5e5;
+  /* Curvature (border-radius) */
+  --radius-button: 6px;
+  --radius-badge: 8px;
+  --radius-card-sm: 12px;
+  --radius-card-lg: 16px;
+  /* Ombreggiadura (box-shadow) */
+  --shadow-sm: 0 2px 8px rgba(35, 39, 42, 0.04),
+    0 4px 16px rgba(35, 39, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(35, 39, 42, 0.06),
+    0 12px 32px rgba(35, 39, 42, 0.08);
+  --glow-amber: 0 0 0 3px rgba(255, 183, 3, 0.25),
+    0 0 16px rgba(255, 183, 3, 0.4);
+  /* Transizioni (Transition) */
+  --transition-fast: 0.25s ease;
+  --transition-main: 0.3s ease;
+  /* Bordi */
+  --border-light: rgba(111, 86, 67, 0.35);
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  /* Per Chrome, Safari, Edge */
+  -moz-osx-font-smoothing: grayscale;
+  /*Per Firefox su sistema operativo macOS */
+  font-family: var(--main-font);
+  font-size: 1.1rem;
+  background-color: var(--bg-main);
+  color: var(--coffee-cream);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+
+/* ==========================================================================
+   2. VARIABILI CSS & DESIGN TOKENS (:root)
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Centralizzare l'intera identità visiva del bistrot (colori caffè/ardesia/ambra,
+   raggi di curvatura, ombre e spaziature) per riutilizzarli in tutto il foglio.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE DENTRO IL SELETTORE ':root':
+   - Palette Sfondi & Superfici:
+     * Un colore per lo sfondo principale della pagina (ardesia molto scura / carbone).
+     * Un colore per le superfici delle card e sezioni (ardesia calda leggermente più chiara).
+     * Un colore per gli stati elevati o hover (ardesia / legno scuro profondo).
+   - Colori Primari & D'Accento:
+     * Un colore ambra / miele dorato al neon per i richiami primari, bottoni e focus.
+     * Un colore mattone tostato o terracotta per richiamare i mattoni a vista e gli allergeni.
+     * Un colore legno caldo / moka per le sfumature e i dettagli analogici.
+   - Colori Testo & Contrasto:
+     * Un colore crema chiaro / latte caldo per i testi principali e titoli (alto contrasto).
+     * Un colore cenere / sabbia per i testi secondari, descrizioni e note aromatiche.
+   - Geometrie & Ombre:
+     * Variabili per i raggi di curvatura (border-radius) per card (es. 12px-16px)
+       e bottoni/badge (es. 6px-8px).
+     * Variabili per ombreggiature morbide (box-shadow per profondità) ed effetti
+       glow caldi (alone soffuso color ambra per elementi attivi).
+     * Variabile per la velocità delle transizioni (es. 0.25s - 0.3s ease).
+   ========================================================================== */
+
+
+/* ==========================================================================
+   3. TIPOGRAFIA, LINK & BOTTONI COMUNI
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Creare uno stile armonico per i testi, le ancore e gli elementi cliccabili.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Titoli (h1, h2, h3, h4, h5, h6):
+     * Assegna un font di carattere (es. 'Space Grotesk' o serif moderno),
+       peso marcato (font-weight: 600 o 700) e colore crema chiaro.
+     * Aggiungi un margine inferiore proporzionato per distanziare il testo sottostante.
+   - Link generali (a):
+     * Rimuovi la sottolineatura predefinita (text-decoration: none).
+     * Assegna il colore di accento (ambra) e una transizione sul cambio di colore.
+     * Definisci lo stato :hover (sottolineatura sottile o variazione di luminosità).
+   - Stile comune per Bottoni / Call to Action (link con aspetto a bottone):
+     * Display inline-block o flex per gestire padding interno generoso e centratura.
+     * Sfondo ambrato vivace con testo scuro a contrasto elevato, oppure bordo marcato.
+     * Raggio di curvatura per arrotondare gli angoli.
+     * Peso del font bold/semi-bold.
+     * Transizione su trasformazione (translateY) e ombra per l'effetto di sollevamento
+       al passaggio del mouse (:hover).
+   ========================================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif-modern);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--primary-amber);
+  margin-bottom: 0.6rem;
+}
+
+h2 {
+  font-size: 1.85rem;
+  margin-bottom: 0.55em;
+}
+
+h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+h5 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+h6 {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+a {
+  text-decoration: none;
+  background-color: var(--primary-amber);
+  color: var(--bg-main);
+  border-radius: var(--radius-button);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--coffee-cream);
+  transform: translateY(-2px);
+  box-shadow: var(--glow-amber);
+}
+
+p {
+  font-family: var(--font-grotesk);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+
+
+/* ==========================================================================
+   4. HEADER & NAVIGAZIONE (#nav-bar, .nav-container, #logo, .nav-link)
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Barra di intestazione pulita, fissa o in cima, con logo riconoscibile e link
+   di navigazione ben distribuiti.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Selettore #nav-bar:
+     * Applica uno sfondo scuro coerente (opzionalmente con leggera trasparenza
+       e sfocatura backdrop-filter per effetto vetro fumé).
+     * Bordo inferiore sottile per separare la barra dal resto della pagina.
+     * Posizionamento: opzionalmente sticky in alto (top: 0, z-index elevato).
+     * Padding interno verticale e orizzontale.
+   - Selettore .nav-container:
+     * Usa Flexbox (display: flex) con allineamento verticale centrato (align-items: center)
+       e distribuzione degli spazi tra logo e link (justify-content: space-between).
+     * Imposta una larghezza massima (max-width) centrata (margin: 0 auto).
+   - Selettore #logo / link logo:
+     * Dimensione font maggiore, peso bold, stile tipografico retrò o ambrato.
+   - Selettore .nav-link:
+     * Spaziatura orizzontale tra i vari link.
+     * Effetto :hover con cambio colore e indicatore visivo sottostante.
+   ========================================================================== */
+#nav-bar {
+  background-color: rgba(35, 39, 42, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1.5rem;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+#logo a {
+  font-family: var(--font-serif-modern);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-amber);
+  background-color: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+
+#logo a:hover,
+#logo a:focus-visible {
+  color: var(--coffee-cream);
+  transform: none;
+  box-shadow: none;
+}
+
+.nav-link {
+  font-family: var(--font-grotesk);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background-color: transparent;
+  padding: 0.25rem 0;
+  box-shadow: none;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--primary-amber);
+  background-color: transparent;
+  border-bottom-color: var(--primary-amber);
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* ==========================================================================
+   5. HERO SECTION (#hero, .hero-card)
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Prima schermata ad altissimo impatto visivo: accoglie l'utente, spiega
+   l'essenza del bistrot e invita all'azione immediata.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Selettore #hero:
+     * Spaziatura interna verticale generosa (padding top e bottom importanti).
+     * Contenitore centrato con larghezza massima.
+     * Titolo h1: dimensioni ampie, colore crema brillante, interlinea compatta.
+   - Selettore .hero-card:
+     * Usa Flexbox o CSS Grid per disporre testo, immagine del bistrot e pulsante.
+     * Sfondo a superficie calda con bordo sfumato e angoli arrotondati.
+     * Spaziatura interna confortevole.
+     * Immagine hero: ritaglio controllato (object-fit: cover), bordi arrotondati,
+       eventuale ombra profonda che la fa risaltare rispetto allo sfondo.
+     * Bottone "Prenota tavolo": renderlo visivamente dominante rispetto al testo.
+   ========================================================================== */
+
+#hero {
+  padding: 5rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+#hero h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+  align-items: center;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.hero-card p {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.hero-card img {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius-card-sm);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-card a {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
+  font-size: 1.05rem;
+  padding: 0.85rem 2rem;
+}
+
+
+/* ==========================================================================
+   6. SEZIONE VISION & SPECIALTY COFFEE (#vision)
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Raccontare la filosofia del bistrot (tempo lento, estrazioni V60/Aeropress/Nitro,
+   chicchi etici) con una composizione editoriale elegante.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Selettore #vision:
+     * Padding di sezione per respirare rispetto all'Hero.
+   - Selettore del blocco article interno:
+     * Organizza i contenuti: su desktop puoi affiancare il testo descrittivo
+       e l'immagine dell'estrazione (usando Flexbox o Grid a 2 colonne).
+     * Testo: colore cenere morbido con evidenziazione in colore crema o ambra
+       per i termini chiave (strong, em).
+     * Immagine dell'estrazione V60: proporzioni armoniose (aspect-ratio),
+       angoli arrotondati e cornice sottile color moka/ardesia.
+   ========================================================================== */
+
+#vision {
+  padding: 5rem 1.5rem;
+  background-color: var(--bg-surface);
+}
+
+#vision article {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 1.25rem 3rem;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+#vision h2 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#vision p {
+  grid-column: 1;
+  color: var(--text-muted);
+}
+
+#vision h3 {
+  grid-column: 1;
+  color: var(--coffee-cream);
+}
+
+#vision strong {
+  color: var(--coffee-cream);
+}
+
+#vision em,
+#vision i {
+  color: var(--primary-amber);
+  font-style: italic;
+}
+
+#vision img {
+  grid-column: 2;
+  grid-row: 1 / 4;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-card-sm);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+  align-self: center;
+}
+
+
+
+
+/* ==========================================================================
+   7. SEZIONE MENU & LISTINO PREZZI (#menu, .menu-container, .menu-card, .disclaimer)
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Architettura a card modulari per le specialità di caffè e bakery, con evidenza
+   di prezzi, note aromatiche, abbinamenti ludici e box allergeni chiaro.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Selettore .menu-container:
+     * Layout a Griglia (display: grid): imposta colonne responsive con
+       repeat(auto-fit, minmax(280px, 1fr)) e gap consistente tra le card.
+   - Selettore .menu-card:
+     * Sfondo superficie ardesia, bordo sottile color legno scuro o ambra attenuata.
+     * Angoli arrotondati e padding interno.
+     * Layout interno verticale con Flexbox per distribuire uniformemente gli elementi.
+     * Micro-interazione :hover: sollevamento leggero (transform: translateY(-4px)),
+       aumento dell'ombra e luminosità del bordo.
+   - Selettori per elementi interni alla card (.item-name, .item-price):
+     * Allinea nome e prezzo: usa Flexbox con justify-content: space-between
+       o evidenzia il prezzo con colore ambra neon e font in risalto.
+   - Selettore per note di degustazione (.moreInfo e paragrafo descrittivo):
+     * Trattamento visivo secondario: dimensione font leggermente ridotta,
+       colore testo attenuato, stile corsivo per l'abbinamento al gioco consigliato.
+   - Selettore .disclaimer (Avvertenze Allergeni):
+     * Griglia a tutta larghezza (grid-column: 1 / -1).
+     * Sfondo con lieve tinta mattone/terracotta scuro e bordo perimetrale caldo.
+     * Iconografia o titolo evidente per attirare l'attenzione sulla salute dell'avventuriere.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   8. SEZIONE LUDOTECA & GIOCHI (#giochi, .giochi-container, .rules, .gameList)
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Presentare la collezione di oltre 300 giochi e guidare i clienti su come
+   funziona l'esperienza al tavolo attraverso 4 step chiari e la lista bestseller.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Selettore .giochi-container:
+     * Disposizione a due colonne su desktop (Flexbox o CSS Grid) e colonna
+       singola su mobile.
+     * Gap abbondante tra il blocco regole e la lista giochi.
+   - Selettore .rules e lista ordinata (ol):
+     * Rimuovi o personalizza i numeri di default: trasforma ogni step (li)
+       in un elemento con spaziatura verticale, evidenziando il numero come badge.
+     * Testo dei singoli passaggi chiaro con evidenziazione del ruolo del Game Master.
+   - Selettore .gameList e lista puntata (ul):
+     * Rimuovi i pallini standard (list-style: none) e usa una spaziatura a blocchetti.
+     * Ogni voce (li) può avere uno sfondo leggermente contrastato o un bordo
+       sinistro color ambra per dare struttura di lista curata.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   9. SEZIONE INVITO ALL'AZIONE (#cta)
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Box conclusivo della home page che spinge l'utente alla prenotazione del tavolo.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Selettore #cta:
+     * Card ad alto impatto: gradiente o sfondo ardesia calda arricchito da bordo ambrato.
+     * Testo centrato (text-align: center), padding generoso.
+     * Titolo accattivante ("Pronto a lanciare la sfida?") e paragrafo rassicurante.
+     * Bottone di prenotazione grande, evidente e centrato, con stato :hover reattivo.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   10. PAGINA PRENOTA: STRUTTURA GENERALE & INTRO (#intro-prenota)
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Introdurre il modulo di prenotazione chiarendo tempi di risposta (entro 2 ore)
+   e la possibilità di richiedere il setup anticipato del gioco.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Selettore #intro-prenota:
+     * Allineamento del testo centrato o a bandiera ordinata.
+     * Margine inferiore per staccare nettamente l'intro dall'inizio del form.
+     * Enfasi sui tempi di conferma con colore crema ad alto contrasto.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   11. FORM DI PRENOTAZIONE (#form, form, .userInfo, .Data)
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Creare un'esperienza di compilazione fluida, ordinata e priva di attriti,
+   sia su desktop che da smartphone, con feedback visivi immediati.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Selettore form:
+     * Contenitore principale centrato, con larghezza massima (es. 700px-850px).
+     * Layout: usa Flexbox o Grid per affiancare le due macro-sezioni
+       (.userInfo e .Data) su schermi ampi, oppure impilale in card verticali distinte.
+   - Selettori dei blocchi interni (.userInfo, .Data):
+     * Sfondo card ardesia, bordi arrotondati, padding interno abbondante.
+     * Bordo sottile che racchiude ciascun gruppo di dati.
+     * Titolo h2 di sezione con numerazione chiara (1. Dati, 2. Dettagli).
+   - Selettore etichette (label):
+     * Display block per posizionare l'etichetta sopra il rispettivo campo.
+     * Margine inferiore ridotto verso il campo e margine superiore verso il campo precedente.
+     * Dimensione font media, colore crema o cenere chiaro, testo obbligatorio (*) evidenziato.
+   - Selettori dei campi input (input[type="text"], input[type="email"],
+     input[type="tel"], input[type="date"], input[type="number"], textarea):
+     * Larghezza al 100% (width: 100%) per riempire il contenitore.
+     * Padding interno comodo (almeno 10px-12px) per facilitare il tocco su mobile.
+     * Sfondo scuro leggermente elevato rispetto alla card.
+     * Bordo sottile di colore neutro (ardesia/legno scuro) e raggio di curvatura (border-radius).
+     * Colore del testo chiaro (crema) e dimensione font adeguata (almeno 16px per
+       evitare lo zoom automatico indesiderato su browser iOS).
+     * Placeholder stilizzato con colore attenuato.
+   - Feedback Visivo Interattivo per i Campi:
+     * Stato :focus e :focus-visible: rimuovi l'outline nativo e applica un bordo
+       acceso color ambra neon accompagnato da una leggera ombra (glow).
+     * Stati di validazione (:valid, :invalid oppure :user-valid, :user-invalid):
+       segnala con un bordo discreto verde/oro per i campi corretti e rosso/mattone
+       per i campi non validi solo dopo l'interazione.
+   - Campo Checkbox Regolamento (input[type="checkbox"]):
+     * Allinea orizzontalmente casella e testo della label (display: flex o inline-flex
+       con align-items: center).
+     * Applica 'accent-color' ambrato per armonizzare la casella nativa con il tema.
+   - Textarea per Note Speciali:
+     * Consenti il ridimensionamento solo verticale (resize: vertical) e altezza minima.
+   - Selettori Pulsanti Form (input[type="submit"], input[type="reset"]):
+     * Disposizione affiancata con Flexbox e spaziatura tra loro.
+     * Submit: stile primario dominante (sfondo ambra, testo scuro, peso bold, cursor: pointer).
+     * Reset: stile secondario (sfondo trasparente o ardesia scura, bordo tenue, testo cenere).
+     * Effetti :hover su entrambi con micro-interazioni coerenti.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   12. CARD REGOLAMENTO RAPIDO & CONTATTI (#regole, .rules-card, .quick-contact)
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Affiancare o far seguire al form le informazioni essenziali sulle buone maniere
+   al tavolo e un recapito veloce per gruppi superiori a 8 persone o tornei.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Selettore #regole:
+     * Organizzazione a due colonne (card regole ampia + aside contatti rapidi)
+       o a schede consecutive.
+   - Selettore .rules-card:
+     * Sfondo card ardesia, angoli arrotondati, lista con spaziatura tra le 4 regole.
+     * Evidenziare in grassetto i concetti chiave (15 minuti di tolleranza, cura meeple, ecc.).
+   - Selettore .quick-contact (aside):
+     * Aspetto compatto da badge/box di supporto con bordo ambrato o icona telefono.
+     * Evidenza per il numero di telefono e la mail per prenotazioni speciali.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   13. RECENSIONI DELLA COMMUNITY (#reviews, .reviews-container, .review-card, .leave-review)
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Mostrare i feedback della gilda di giocatori (social proof) per rassicurare
+   chi prenota sulla qualità del caffè e sull'atmosfera dei tavoli.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Selettore .reviews-container:
+     * Layout a Griglia (display: grid) responsive con repeat(auto-fit, minmax(260px, 1fr))
+       e spaziatura (gap) tra le recensioni.
+   - Selettore .review-card:
+     * Sfondo ardesia caldo, bordo discreto e padding interno.
+     * Intestazione (.review-header): allineamento del nome del giocatore e delle
+       stelle di rating con Flexbox (space-between).
+     * Citazione (blockquote): stile corsivo, colore cenere morbido, interlinea rilassata.
+     * Metadati (.review-meta): badge o testo secondario che indica il tipo di sessione
+       vissuta (es. V60 & Eurogame, GDR & Bakery).
+   - Selettore .leave-review:
+     * Box conclusivo centrato che stimola la community a lasciare una recensione su Google.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   14. FOOTER (footer)
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Chiusura elegante e solida del layout con tutte le coordinate pratiche del bistrot.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Selettore footer:
+     * Sfondo molto scuro, bordo superiore sottile di separazione.
+     * Spaziatura verticale confortevole (padding top e bottom).
+     * Testo centrato o distribuito in colonne pulite.
+     * Colore del testo secondario (cenere), con grassetti o icone in evidenza
+       per orari di apertura, indirizzo, telefono ed etica dei chicchi.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   15. RESPONSIVE DESIGN & MEDIA QUERIES
+   --------------------------------------------------------------------------
+   OBIETTIVO:
+   Garantire che l'interfaccia sia fluida e impeccabile su tutti i dispositivi,
+   da smartphone compatti a grandi monitor desktop.
+
+   COSA DEVI SCRIVERE CONCETTUALMENTE:
+   - Media Query Tablet / Schermi Medi (es. @media (max-width: 992px) o 768px):
+     * Riorganizza i container a 2 colonne (.giochi-container, #regole) in colonna
+       singola qualora lo spazio risulti compresso.
+     * Adatta la griglia del menu e delle recensioni a 2 colonne.
+     * Riduci proporzionalmente le dimensioni dei titoli h1 e h2.
+   - Media Query Mobile / Smartphone (es. @media (max-width: 576px)):
+     * Navigazione (.nav-container): disponi logo e link in colonna o con scorrimento
+       orizzontale compatto.
+     * Form di prenotazione: assicurati che tutti i campi occupino la larghezza
+       completa a colonna singola per una compilazione rapida con il pollice.
+     * Pulsanti Submit e Reset: impilali verticalmente (flex-direction: column)
+       oppure distribuiscili a tutta larghezza.
+     * Padding laterale delle sezioni: riduci a 15px-20px per massimizzare l'area
+       visibile per testi e card su schermi stretti.
+     * Riduci i margini verticali per un ritmo visivo più serrato.
+   ========================================================================== */
