@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570 430" width="100%" height="100%">
+  <defs>
+    <!-- Filtri Glow per Effetto Neon Realistico -->
+    <filter id="neon-glow-diffuse" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="blur1" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="28" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+      </feMerge>
+    </filter>
+
+    <filter id="neon-glow-intense" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur1" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Simbolo Master con i Tracciati Vettoriali di Tutte le Lettere -->
+    <g id="neon-tubes" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- ================= RIGA 1: THE ================= -->
+      <!-- T -->
+      <path d="M 45 42 H 95 V 58 H 78 V 104 H 62 V 58 H 45 Z" />
+      <!-- H -->
+      <path d="M 108 42 H 124 V 66 H 146 V 42 H 162 V 104 H 146 V 80 H 124 V 104 H 108 Z" />
+      <!-- E -->
+      <path d="M 175 42 H 222 V 56 H 191 V 66 H 216 V 79 H 191 V 90 H 222 V 104 H 175 Z" />
+
+      <!-- ================= RIGA 2: PIXEL ================= -->
+      <!-- P -->
+      <path d="M 45 138 H 94 C 116 138 128 149 128 170 C 128 191 116 202 94 202 H 70 V 246 H 45 Z M 70 157 H 92 C 102 157 107 163 107 170 C 107 177 102 183 92 183 H 70 Z" />
+      <!-- I -->
+      <rect x="144" y="138" width="23" height="108" rx="10" ry="10" />
+      <!-- X -->
+      <path d="M 184 138 H 206 L 232 178 L 258 138 H 280 L 244 192 L 282 246 H 260 L 232 206 L 204 246 H 182 L 220 192 Z" />
+      <!-- E -->
+      <path d="M 298 138 H 360 V 156 H 322 V 183 H 354 V 201 H 322 V 228 H 360 V 246 H 298 Z" />
+      <!-- L -->
+      <path d="M 378 138 H 402 V 228 H 446 V 246 H 378 Z" />
+
+      <!-- ================= RIGA 3: & BEAN ================= -->
+      <!-- & (Ampersand Neon con doppio occhiello arrotondato) -->
+      <path d="M 90 280 C 76 280 66 290 66 304 C 66 317 73 325 84 333 C 65 343 54 357 54 372 C 54 392 70 404 92 404 C 114 404 130 391 136 376 L 122 368 C 118 377 108 387 92 387 C 81 387 72 381 72 371 C 72 360 81 352 101 341 C 108 348 116 355 124 362 L 135 349 C 127 341 119 334 110 327 C 119 318 124 310 124 301 C 124 288 112 280 95 280 H 90 Z M 95 294 C 103 294 108 298 108 304 C 108 310 103 316 97 321 C 90 316 85 310 85 304 C 85 298 89 294 95 294 Z" />
+      <!-- B -->
+      <path d="M 152 280 H 200 C 218 280 229 290 229 306 C 229 318 220 327 207 331 C 223 335 234 346 234 363 C 234 381 219 390 200 390 H 152 Z M 174 298 H 197 C 205 298 210 302 210 308 C 210 314 205 318 197 318 H 174 Z M 174 334 H 200 C 208 334 214 339 214 347 C 214 355 208 360 200 360 H 174 Z" />
+      <!-- E -->
+      <path d="M 252 280 H 314 V 298 H 276 V 325 H 308 V 343 H 276 V 372 H 314 V 390 H 252 Z" />
+      <!-- A -->
+      <path d="M 330 390 L 364 280 H 390 L 424 390 H 400 L 392 362 H 362 L 354 390 Z M 367 344 H 387 L 377 308 Z" />
+      <!-- N -->
+      <path d="M 442 390 V 280 H 466 L 500 342 V 280 H 522 V 390 H 498 L 464 326 V 390 Z" />
+    </g>
+  </defs>
+
+  <!-- Livello 1: Alone Caldo d'Ambiente (Warm Amber Diffusion) -->
+  <use href="#neon-tubes" stroke="#ff7b00" stroke-width="26" opacity="0.3" filter="url(#neon-glow-diffuse)" />
+
+  <!-- Livello 2: Bagliore Neon Principale (Brand Amber #ffb703) -->
+  <use href="#neon-tubes" stroke="#ffb703" stroke-width="14" opacity="0.8" filter="url(#neon-glow-intense)" />
+
+  <!-- Livello 3: Corpo del Tubo Neon (Giallo Oro Brillante) -->
+  <use href="#neon-tubes" stroke="#ffe066" stroke-width="6.5" opacity="0.95" />
+
+  <!-- Livello 4: Filamento / Anima di Scarica Incandescente (Bianco Caldo Neon) -->
+  <use href="#neon-tubes" stroke="#ffffff" stroke-width="2.5" opacity="1" />
+</svg>
