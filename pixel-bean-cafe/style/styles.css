@@ -63,3 +63,41 @@ body {
   color: var(--accent-wood);
   font-weight: 350;
 }
+
+/* Feature Cards Hero */
+.hero-feature-card {
+  background-color: #171b1e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.1rem 0.6rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.hero-feature-card:hover {
+  border-color: rgba(255, 183, 3, 0.4);
+  transform: translateY(-2px);
+}
+
+.hero-feature-icon {
+  font-size: 1.85rem;
+  color: var(--primary-amber);
+  margin-bottom: 0.6rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-feature-text {
+  color: var(--coffee-cream);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
