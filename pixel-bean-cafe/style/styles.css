@@ -165,3 +165,60 @@ body {
   line-height: 1.2;
   margin-bottom: 0;
 }
+
+#menu {
+  background: linear-gradient(rgba(22, 29, 32, 0.85),
+      rgba(20, 18, 30, 0.92));
+}
+
+.menu-sub-text {
+  color: var(--accent-wood);
+}
+
+/* Menu Nav Tabs (Segmented Control Pill come da mockup) */
+.menu-nav-tabs {
+  display: inline-flex;
+  align-items: center;
+  background-color: #171b1e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 6px;
+  gap: 4px;
+}
+
+.menu-nav-tabs .nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.4rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  min-height: 58px;
+  transition: all var(--transition-fast);
+}
+
+.menu-nav-tabs .nav-link:hover {
+  color: var(--primary-amber);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.menu-nav-tabs .nav-link.active {
+  background-color: var(--primary-amber);
+  color: #000000;
+  font-weight: 700;
+}
+
+.menu-nav-tabs .nav-link.active:hover {
+  background-color: var(--primary-amber);
+  color: #000000;
+}
+
+.menu-nav-tabs .nav-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
