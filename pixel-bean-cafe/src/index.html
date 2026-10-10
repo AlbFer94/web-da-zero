@@ -17,24 +17,31 @@
 
 <body>
      <!-- In attesa di implementazione del Piano di Refactoring -->
-     <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-          <div class="container-fluid">
-               <a class="navbar-brand" href="#">
-                    <img src="../assets/svg/logo.svg" alt="Logo" width="100" height="100">
+     <nav class="navbar navbar-expand-lg bg-dark sticky-top border-bottom border-secondary-subtle" data-bs-theme="dark">
+          <div class="container">
+               <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                    <img src="../assets/svg/logo.svg" alt="Logo" class="navbar-logo" width="48" height="48">
+                    <span class="fw-bold text-warning d-none d-sm-inline fs-5">Pixel &amp; Bean</span>
                </a>
-               <a class="nav-link active text-warning-emphasis" aria-current="page" href="#menu"><u>Menù &
-                         Caffetteria</u></a>
-               <a class="btn btn-warning" role="button" href="/src/prenota.html">Prenota un Tavolo</a>
 
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-               </button>
+               <div class="d-flex align-items-center gap-2 order-lg-last">
+                    <a class="btn btn-warning btn-sm px-3 fw-semibold" role="button"
+                         href="/src/prenota.html">Prenota</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                         aria-expanded="false" aria-label="Toggle navigation">
+                         <span class="navbar-toggler-icon"></span>
+                    </button>
+               </div>
+
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 py-2 py-lg-0">
                          <li class="nav-item">
-                              <a class="nav-link active" aria-current="page" href="#vision">La Nostra Visione</a>
+                              <a class="nav-link text-warning-emphasis fw-medium" href="#menu">Menù &amp;
+                                   Caffetteria</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" href="#vision">La Nostra Visione</a>
                          </li>
                          <li class="nav-item">
                               <a class="nav-link" href="#">Recensioni</a>
@@ -64,35 +71,34 @@
           <div class="container">
                <div class="row align-items-center g-4 g-lg-5">
 
-                    <!-- Colonna 1: Testo & CTA (Su mobile sopra, su desktop a sinistra) -->
-                    <div class="col-12 col-lg-6 text-start text-lg-start px-5" id="hero-content">
-                         <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill">
-                              <i class="bi bi-dice-5-fill me-1"></i> The Pixel & Bean Café: Specialty Coffee & Giochi da
-                              Tavolo
+                    <!-- Colonna Testo & CTA -->
+                    <div class="col-12 col-lg-8 col-xl-7 text-start px-3 px-sm-4 px-lg-0" id="hero-content">
+                         <span
+                              class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill text-wrap text-start lh-base">
+                              <i class="bi bi-dice-5-fill me-1"></i> The Pixel &amp; Bean Café: Specialty Coffee &amp;
+                              Giochi da Tavolo
                          </span>
-                         <h1 class="display-4 fw-bold text-light mb-3">
-                              Al Pixel & Bean abbiamo una regola d'oro: <span class="text-warning">spegni le notifiche,
+                         <h1 class="display-5 display-lg-4 fw-bold text-light mb-3">
+                              Al Pixel &amp; Bean abbiamo una regola d'oro: <span class="text-warning">spegni le
+                                   notifiche,
                                    accendi la mente!</span>
                          </h1>
-                         <p class="lead mb-4">
+                         <p class="lead mb-4 fs-6 fs-md-5">
                               Siamo un bistrot indipendente nato per chi ama il profumo dello <i>specialty coffee
-                                   tostato
-                                   fresco</i>, il rumore dei dadi sul feltro e l'atmosfera intramontabile del
-                              <u>retrogaming
-                                   d'autore</u>. Che tu sia qui per una sessione epica di D&D o per un'estrazione filtro
-                              a
-                              regola d'arte, <strong>hai trovato la tua seconda casa.</strong>
+                                   tostato fresco</i>, il rumore dei dadi sul feltro e l'atmosfera intramontabile del
+                              <u>retrogaming d'autore</u>. Che tu sia qui per una sessione epica di D&amp;D o per
+                              un'estrazione filtro
+                              a regola d'arte, <strong>hai trovato la tua seconda casa.</strong>
                          </p>
-                         <div
-                              class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
-                              <a href="./prenota.html" class="btn btn-warning btn-lg px-4 fw-semibold">
+                         <div class="d-flex flex-column flex-sm-row justify-content-start gap-3">
+                              <a href="./prenota.html" class="btn btn-warning btn-lg px-4 fw-semibold text-center">
                                    <i class="bi bi-calendar-check me-2"></i>Prenota Tavolo
                               </a>
-                              <a href="#menu" class="btn btn-outline-light btn-lg px-4">
+                              <a href="#menu" class="btn btn-outline-light btn-lg px-4 text-center">
                                    <i class="bi bi-book-half me-2"></i>Scopri il Menù
                               </a>
                          </div>
-                         <div class="row g-3 mt-4">
+                         <div class="row g-2 g-sm-3 mt-4">
                               <div class="col-4">
                                    <div class="hero-feature-card">
                                         <div class="hero-feature-icon">
@@ -116,7 +122,7 @@
                               <div class="col-4">
                                    <div class="hero-feature-card">
                                         <div class="hero-feature-icon">
-                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
                                                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                   stroke-linecap="round" stroke-linejoin="round">
                                                   <path d="M 8 5 H 17" />
@@ -136,236 +142,319 @@
                          </div>
                     </div>
 
-
                </div>
           </div>
      </section>
 
-     <div class="container vision-card">
-          <div class="row mt-4">
-               <div class="col-6 vision-feature-icon text-warning">
-                    <i class="bi bi-people"></i>
+     <!-- Vision Section -->
+     <section class="container my-5">
+          <div class="vision-card">
+               <div class="row align-items-center mb-3">
+                    <div class="col-6 vision-feature-icon text-warning">
+                         <i class="bi bi-people"></i>
+                    </div>
+                    <div class="col-6 text-end">
+                         <span class="badge bg-dark fw-normal p-2 fs-6 vision-label" id="vision">La Nostra Vision</span>
+                    </div>
                </div>
-               <div class="col-6 text-end">
-                    <p class="badge bg-dark fw-normal p-2 fs-6 vision-label" id="vision">La Nostra Vision</p>
-                    </span>
-               </div>
-          </div>
-          <div class="row">
-               <div class="col-12 vision-text">
-                    <span class="fs-1 fw-normal text-light py-5"><i>
-                              Riprendiamoci il lusso dell'attesa, il
-                              calore
-                              della materia e la
-                              compagnia senza
-                              notifiche.
-                         </i></span>
-                    <span class="lead">
-                         <p class="fw-lighter">In un mondo che va a 120 FPS, noi preferiamo il <strong>tempo lento
+               <div class="row">
+                    <div class="col-12 vision-text">
+                         <blockquote class="fs-2 fs-lg-1 fw-normal text-light my-3 my-md-4 fst-italic">
+                              «Riprendiamoci il lusso dell'attesa, il calore della materia e la compagnia senza
+                              notifiche.»
+                         </blockquote>
+                         <p class="lead fw-light fs-6 fs-md-5">
+                              In un mondo che va a 120 FPS, noi preferiamo il <strong>tempo lento
                                    dell'analogico</strong>.
                               Il nostro bistrot è uno spazio sicuro progettato per radunare community, creare nuove
                               amicizie
-                              e riscoprire il piacere tattile di una plancia di legno o di una tazza calda servita
-                              a
-                              temperatura perfetta.
-                              Nessun timer sui tavoli, zero bibite zuccherate industriali: solo ottima compagnia,
-                              lievitati
-                              da forno artigianale e chicchi d'eccellenza eticamente sostenibili.</p>
-                    </span>
-                    <div class="d-flex align-items-center gap-3 vision-footer mt-4">
-                         <div class="hourglass text-warning shadow-sm">
-                              <i class="bi bi-hourglass-split"></i>
-                         </div>
-                         <div class="hourglass-text">
-                              <div class="hourglass-title">Ritmo Analogico</div>
-                              <div class="hourglass-subtitle">Specialty Coffee &amp; Board Gaming Parlor</div>
+                              e riscoprire il piacere tattile di una plancia di legno o di una tazza calda servita a
+                              temperatura perfetta. Nessun timer sui tavoli, zero bibite zuccherate industriali: solo
+                              ottima compagnia,
+                              lievitati da forno artigianale e chicchi d'eccellenza eticamente sostenibili.
+                         </p>
+                         <div class="d-flex align-items-center gap-3 vision-footer mt-4">
+                              <div class="hourglass text-warning shadow-sm">
+                                   <i class="bi bi-hourglass-split"></i>
+                              </div>
+                              <div class="hourglass-text">
+                                   <div class="hourglass-title">Ritmo Analogico</div>
+                                   <div class="hourglass-subtitle">Specialty Coffee &amp; Board Gaming Parlor</div>
+                              </div>
                          </div>
                     </div>
                </div>
           </div>
-     </div>
+     </section>
 
      <!-- Menu Section -->
-     <div class="container-fluid" id="menu">
-          <div class="row p-4">
-               <div class="col-12">
-                    <p class="text-warning fs-6 text-uppercase fw-semibold">Artigianalità & Cura</p>
-                    <h2 class="display-4 fw-bold">Il Nostro Menù da Tavolo</h2>
-                    <p class="fs-4 menu-sub-text">Ogni bevanda e spuntino è pensato per accompagnare il gioco senza
-                         interruzioni.</p>
+     <section class="py-5" id="menu">
+          <div class="container">
+               <div class="row mb-4 text-center text-md-start">
+                    <div class="col-12 col-lg-8 mx-auto mx-lg-0">
+                         <p class="text-warning fs-6 text-uppercase fw-semibold mb-1">Artigianalità &amp; Cura</p>
+                         <h2 class="display-5 display-md-4 fw-bold">Il Nostro Menù da Tavolo</h2>
+                         <p class="fs-5 menu-sub-text">Ogni bevanda e spuntino è pensato per accompagnare il gioco senza
+                              interruzioni.</p>
+                    </div>
                </div>
-          </div>
-          <div class="row">
-               <div class="col-12 d-flex justify-content-center">
-                    <nav>
-                         <div class="nav menu-nav-tabs" id="nav-tab" role="tablist">
-                              <button class="nav-link active" id="nav-caffetteria-tab" data-bs-toggle="tab"
-                                   data-bs-target="#nav-caffetteria" type="button" role="tab"
-                                   aria-controls="nav-caffetteria" aria-selected="true">
-                                   <svg class="nav-icon me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
-                                        <path d="M3 8h14v7a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
-                                        <line x1="2" x2="22" y1="21" y2="21" />
-                                   </svg>
-                                   <span>Caffetteria Lenta</span>
-                              </button>
-                              <button class="nav-link" id="nav-snack-tab" data-bs-toggle="tab"
-                                   data-bs-target="#nav-snack" type="button" role="tab" aria-controls="nav-snack"
-                                   aria-selected="false">
-                                   <svg class="nav-icon me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                             d="M4.5 16.5c-1.2-2.5-.2-5.5 1.8-7.5C8.2 7 10 6.5 12 6.5s3.8.5 5.7 2.5c2 2 3 5 1.8 7.5-1.8-1.8-4.2-3-7.5-3s-5.7 1.2-7.5 3Z" />
-                                        <path d="M8.5 8.5c-.3 1.8-.3 3.5 0 5" />
-                                        <path d="M12 6.5v7" />
-                                        <path d="M15.5 8.5c.3 1.8.3 3.5 0 5" />
-                                   </svg>
-                                   <span class="text-center lh-sm">Snack Salva-Carte</span>
-                              </button>
-                         </div>
-                    </nav>
-               </div>
-               <div class="col-12 mt-4">
-                    <div class="tab-content" id="nav-tabContent">
-                         <div class="tab-pane fade show active p-3" id="nav-caffetteria" role="tabpanel"
-                              aria-labelledby="nav-caffetteria-tab" tabindex="0">
-                              <div class="card bg-dark text-light">
-                                   <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                             <h4 class="card-title display-6">V60 Pour-Over Microlotto </h4>
-                                             <span class="badge text-warning fs-3">€ 4.50</span>
-                                        </div>
-                                        <span class="badge bg-secondary mb-2 origin">Etiopia
-                                             Yirgacheffe</span>
-                                        <p class="card-text"><i>
-                                                  Note floreali di gelsomino, bergamotto e pesca bianca.
-                                                  Estrazione
-                                                  a caduta lenta.
-                                             </i></p>
-                                   </div>
-                              </div>
 
-                              <div class="card bg-dark text-light">
-                                   <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                             <h4 class="card-title display-6">Chemex per Due </h4>
-                                             <span class="badge text-warning fs-3">€ 7.50</span>
-                                        </div>
-                                        <span class="badge bg-secondary mb-2 origin">Da Condividere</span>
-                                        <p class="card-text"><i>
-                                                  Caffè da 500ml servita al tavolo con tazze in ceramica artigianale.
-                                                  Colombia Geisha.
-                                             </i></p>
+               <div class="row justify-content-center">
+                    <div class="col-12 col-xl-10">
+                         <div class="d-flex justify-content-center mb-4">
+                              <nav class="w-100 d-flex justify-content-center">
+                                   <div class="nav menu-nav-tabs" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="nav-caffetteria-tab" data-bs-toggle="tab"
+                                             data-bs-target="#nav-caffetteria" type="button" role="tab"
+                                             aria-controls="nav-caffetteria" aria-selected="true">
+                                             <svg class="nav-icon me-2" xmlns="http://www.w3.org/2000/svg"
+                                                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round">
+                                                  <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
+                                                  <path d="M3 8h14v7a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
+                                                  <line x1="2" x2="22" y1="21" y2="21" />
+                                             </svg>
+                                             <span>Caffetteria Lenta</span>
+                                        </button>
+                                        <button class="nav-link" id="nav-snack-tab" data-bs-toggle="tab"
+                                             data-bs-target="#nav-snack" type="button" role="tab"
+                                             aria-controls="nav-snack" aria-selected="false">
+                                             <svg class="nav-icon me-2" xmlns="http://www.w3.org/2000/svg"
+                                                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round">
+                                                  <path
+                                                       d="M4.5 16.5c-1.2-2.5-.2-5.5 1.8-7.5C8.2 7 10 6.5 12 6.5s3.8.5 5.7 2.5c2 2 3 5 1.8 7.5-1.8-1.8-4.2-3-7.5-3s-5.7 1.2-7.5 3Z" />
+                                                  <path d="M8.5 8.5c-.3 1.8-.3 3.5 0 5" />
+                                                  <path d="M12 6.5v7" />
+                                                  <path d="M15.5 8.5c.3 1.8.3 3.5 0 5" />
+                                             </svg>
+                                             <span class="lh-sm">Snack Salva-Carte</span>
+                                        </button>
                                    </div>
-                              </div>
-
-                              <div class="card bg-dark text-light">
-                                   <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                             <h4 class="card-title display-6">Nitro Cold Brew alla Spina </h4>
-                                             <span class="badge text-warning fs-3">€ 5.00</span>
-                                        </div>
-                                        <span class="badge bg-secondary mb-2 origin">Crema Vellutata</span>
-                                        <p class="card-text"><i>
-                                                  Infusione a freddo 18 hmontata a carbo-azoto per una consistenza
-                                                  setosa
-                                                  stile stout.
-                                             </i></p>
-                                   </div>
-                              </div>
-
-                              <div class="card bg-dark text-light">
-                                   <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                             <h4 class="card-title display-6">Espresso Pixel Signature Double</h4>
-                                             <span class="badge text-warning fs-3">€ 2.20</span>
-                                        </div>
-                                        <span class="badge bg-secondary mb-2 origin">Signature</span>
-                                        <p class="card-text"><i>
-                                                  Doppia estrazione bilanciata con sentori di cioccolato fondente 80% e
-                                                  nocciola tostata.
-                                             </i></p>
-                                   </div>
-                              </div>
+                              </nav>
                          </div>
 
-                         <div class="tab-pane fade p-3" id="nav-snack" role="tabpanel" aria-labelledby="nav-snack-tab"
-                              tabindex="0">
-                              <div class="card bg-dark text-light">
-                                   <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                             <h4 class="card-title display-6">Taralli Pugliesi Tradizionali </h4>
-                                             <span class="badge text-warning fs-3">€ 3.80</span>
+                         <div class="tab-content" id="nav-tabContent">
+                              <div class="tab-pane fade show active p-3" id="nav-caffetteria" role="tabpanel"
+                                   aria-labelledby="nav-caffetteria-tab" tabindex="0">
+                                   <div class="card bg-dark text-light">
+                                        <div class="card-body">
+                                             <div
+                                                  class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                                  <h3 class="card-title fw-bold mb-0">V60 Pour-Over Microlotto</h3>
+                                                  <span class="badge text-warning fs-4 fw-bold p-0">€ 4.50</span>
+                                             </div>
+                                             <span class="badge bg-secondary mb-2 origin">Etiopia Yirgacheffe</span>
+                                             <p class="card-text"><i>
+                                                       Note floreali di gelsomino, bergamotto e pesca bianca. Estrazione
+                                                       a caduta lenta.
+                                                  </i></p>
                                         </div>
-                                        <span class="badge bg-secondary mb-2 origin">No Grease</span>
-                                        <p class="card-text"><i>
-                                                  Asciutti, friabili all'olio di oliva evo e semi di finocchietto. Dita
-                                                  sempre immacolate.
-                                             </i></p>
+                                   </div>
+
+                                   <div class="card bg-dark text-light">
+                                        <div class="card-body">
+                                             <div
+                                                  class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                                  <h3 class="card-title fw-bold mb-0">Chemex per Due</h3>
+                                                  <span class="badge text-warning fs-4 fw-bold p-0">€ 7.50</span>
+                                             </div>
+                                             <span class="badge bg-secondary mb-2 origin">Da Condividere</span>
+                                             <p class="card-text"><i>
+                                                       Caffè da 500ml servita al tavolo con tazze in ceramica
+                                                       artigianale. Colombia Geisha.
+                                                  </i></p>
+                                        </div>
+                                   </div>
+
+                                   <div class="card bg-dark text-light">
+                                        <div class="card-body">
+                                             <div
+                                                  class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                                  <h3 class="card-title fw-bold mb-0">Nitro Cold Brew alla Spina</h3>
+                                                  <span class="badge text-warning fs-4 fw-bold p-0">€ 5.00</span>
+                                             </div>
+                                             <span class="badge bg-secondary mb-2 origin">Crema Vellutata</span>
+                                             <p class="card-text"><i>
+                                                       Infusione a freddo 18 hmontata a carbo-azoto per una consistenza
+                                                       setosa stile stout.
+                                                  </i></p>
+                                        </div>
+                                   </div>
+
+                                   <div class="card bg-dark text-light">
+                                        <div class="card-body">
+                                             <div
+                                                  class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                                  <h3 class="card-title fw-bold mb-0">Espresso Pixel Double</h3>
+                                                  <span class="badge text-warning fs-4 fw-bold p-0">€ 2.20</span>
+                                             </div>
+                                             <span class="badge bg-secondary mb-2 origin">Signature</span>
+                                             <p class="card-text"><i>
+                                                       Doppia estrazione bilanciata con sentori di cioccolato fondente
+                                                       80% e nocciola tostata.
+                                                  </i></p>
+                                        </div>
                                    </div>
                               </div>
 
-                              <div class="card bg-dark text-light">
-                                   <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                             <h4 class="card-title display-6">Mix Frutta Secca & Noci </h4>
-                                             <span class="badge text-warning fs-3">€ 4.50</span>
+                              <div class="tab-pane fade p-3" id="nav-snack" role="tabpanel"
+                                   aria-labelledby="nav-snack-tab" tabindex="0">
+                                   <div class="card bg-dark text-light">
+                                        <div class="card-body">
+                                             <div
+                                                  class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                                  <h3 class="card-title fw-bold mb-0">Taralli Pugliesi Tradizionali</h3>
+                                                  <span class="badge text-warning fs-4 fw-bold p-0">€ 3.80</span>
+                                             </div>
+                                             <span class="badge bg-secondary mb-2 origin">No Grease</span>
+                                             <p class="card-text"><i>
+                                                       Asciutti, friabili all'olio di oliva evo e semi di finocchietto.
+                                                       Dita sempre immacolate.
+                                                  </i></p>
                                         </div>
-                                        <span class="badge bg-secondary mb-2 origin">Vegan</span>
-                                        <p class="card-text"><i>
-                                                  Mandorle tostate, noci pecan e mirtilli disidratati. Serviti in
-                                                  ciotola di terracotta.
-                                             </i></p>
+                                   </div>
+
+                                   <div class="card bg-dark text-light">
+                                        <div class="card-body">
+                                             <div
+                                                  class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                                  <h3 class="card-title fw-bold mb-0">Mix Frutta Secca &amp; Noci</h3>
+                                                  <span class="badge text-warning fs-4 fw-bold p-0">€ 4.50</span>
+                                             </div>
+                                             <span class="badge bg-secondary mb-2 origin">Vegan</span>
+                                             <p class="card-text"><i>
+                                                       Mandorle tostate, noci pecan e mirtilli disidratati. Serviti in
+                                                       ciotola di terracotta.
+                                                  </i></p>
+                                        </div>
+                                   </div>
+
+                                   <div class="card bg-dark text-light">
+                                        <div class="card-body">
+                                             <div
+                                                  class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                                  <h3 class="card-title fw-bold mb-0">Bocconcini Focaccia Pulita</h3>
+                                                  <span class="badge text-warning fs-4 fw-bold p-0">€ 5.50</span>
+                                             </div>
+                                             <span class="badge bg-secondary mb-2 origin">No Grease</span>
+                                             <p class="card-text"><i>
+                                                       Cubetti one-bite con pomodorini confit caramellati e origano
+                                                       fresco.
+                                                  </i></p>
+                                        </div>
+                                   </div>
+
+                                   <div class="card bg-dark text-light">
+                                        <div class="card-body">
+                                             <div
+                                                  class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                                  <h3 class="card-title fw-bold mb-0">Biscotto Artigianale "8-Bit"</h3>
+                                                  <span class="badge text-warning fs-4 fw-bold p-0">€ 3.00</span>
+                                             </div>
+                                             <span class="badge bg-secondary mb-2 origin">Frolla Scura</span>
+                                             <p class="card-text"><i>
+                                                       Frolla al cacao crudo con sale di Maldon e intaglio pixellato.
+                                                       Non sbriciola.
+                                                  </i></p>
+                                        </div>
                                    </div>
                               </div>
-
-                              <div class="card bg-dark text-light">
-                                   <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                             <h4 class="card-title display-6">Bocconcini Focaccia a Taglio Pulito </h4>
-                                             <span class="badge text-warning fs-3">€ 5.50</span>
-                                        </div>
-                                        <span class="badge bg-secondary mb-2 origin">No Grease </span>
-                                        <p class="card-text"><i>
-                                                  Cubetti one-bite con pomodorini confit caramellati e origano fresco.
-                                             </i></p>
-                                   </div>
-                              </div>
-
-                              <div class="card bg-dark text-light">
-                                   <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                             <h4 class="card-title display-6">Biscotto Artigianale "8-Bit" </h4>
-                                             <span class="badge text-warning fs-3">€ 3.00</span>
-                                        </div>
-                                        <span class="badge bg-secondary mb-2 origin">Frolla Scura</span>
-                                        <p class="card-text"><i>
-                                                  Frolla al cacao crudo con sale di Maldon e intaglio pixellato. Non
-                                                  sbriciola.
-                                             </i></p>
-                                   </div>
-                              </div>
-
                          </div>
-                         <div class="d-inline-flex gap-1">
-                              <p>Opzioni 100% Vegane e gluten-free disponibili per ogni tavolo.</p>
-                              <a data-bs-toggle="collapse" href="#vegan-items" role="button" aria-expanded="false"
-                                   aria-controls="vegan-tems">Dettagli</a>
-                         </div>
 
-                         <div class="collapse" id="vegan-items">
-                              <div class="card card-body">Some placeholder content for the collapse component. This
-                                   panel is hidden by default but revealed when the user activates the relevant trigger
+                         <!-- Sezione Avviso Opzioni Vegane -->
+                         <div class="p-3">
+                              <div class="card bg-dark text-light border-success">
+                                   <div class="card-body">
+                                        <div class="d-flex align-items-center gap-2 gap-sm-3">
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                  fill="currentColor" class="bi bi-leaf text-success flex-shrink-0"
+                                                  viewBox="0 0 16 16">
+                                                  <path
+                                                       d="M1.4 1.7c.216.289.65.84 1.725 1.274 1.093.44 2.884.774 5.834.528l.37-.023c1.823-.06 3.117.598 3.956 1.579C14.16 6.082 14.5 7.41 14.5 8.5c0 .58-.032 1.285-.229 1.997q.198.248.382.54c.756 1.2 1.19 2.563 1.348 3.966a1 1 0 0 1-1.98.198c-.13-.97-.397-1.913-.868-2.77C12.173 13.386 10.565 14 8 14c-1.854 0-3.32-.544-4.45-1.435-1.125-.887-1.89-2.095-2.391-3.383C.16 6.62.16 3.646.509 1.902L.73.806zm-.05 1.39c-.146 1.609-.008 3.809.74 5.728.457 1.17 1.13 2.213 2.079 2.961.942.744 2.185 1.22 3.83 1.221 2.588 0 3.91-.66 4.609-1.445-1.789-2.46-4.121-1.213-6.342-2.68-.74-.488-1.735-1.323-1.844-2.308-.023-.214.237-.274.38-.112 1.4 1.6 3.573 1.757 5.59 2.045 1.227.215 2.21.526 3.033 1.158.058-.39.075-.782.075-1.158 0-.91-.288-1.988-.975-2.792-.626-.732-1.622-1.281-3.167-1.229l-.316.02c-3.05.253-5.01-.08-6.291-.598a5.3 5.3 0 0 1-1.4-.811" />
+                                             </svg>
+                                             <p class="card-text mb-0 flex-grow-1 fs-6">
+                                                  Opzioni 100% Vegane e gluten-free disponibili per ogni tavolo.
+                                             </p>
+                                             <a class="badge text-warning border border-warning text-decoration-none fs-6 flex-shrink-0"
+                                                  data-bs-toggle="collapse" href="#vegan-items" role="button"
+                                                  aria-expanded="false" aria-controls="vegan-items">Dettagli</a>
+                                        </div>
+                                   </div>
                               </div>
 
+                              <div class="collapse mt-3" id="vegan-items">
+                                   <div class="menu-items-grid d-flex flex-column gap-3">
+                                        <div class="card bg-dark text-light border-success">
+                                             <div class="card-body">
+                                                  <div
+                                                       class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                                       <h3 class="card-title fw-bold mb-0">Oat Milk Golden Matcha</h3>
+                                                       <span class="badge text-warning fs-4 fw-bold p-0">€ 4.80</span>
+                                                  </div>
+                                                  <span class="badge bg-secondary mb-2 origin">Plant-Based Drink</span>
+                                                  <p class="card-text"><i>
+                                                            Latte d'avena biologico montato a vapore con matcha
+                                                            cerimoniale di Uji e curcuma.
+                                                       </i></p>
+                                             </div>
+                                        </div>
+
+                                        <div class="card bg-dark text-light border-success">
+                                             <div class="card-body">
+                                                  <div
+                                                       class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                                       <h3 class="card-title fw-bold mb-0">Cold Brew Oat Velvet</h3>
+                                                       <span class="badge text-warning fs-4 fw-bold p-0">€ 5.20</span>
+                                                  </div>
+                                                  <span class="badge bg-secondary mb-2 origin">Cold Specialty</span>
+                                                  <p class="card-text"><i>
+                                                            Infuso a freddo 14h unito a crema d'avena artigianale e
+                                                            sciroppo d'acero puro grado A.
+                                                       </i></p>
+                                             </div>
+                                        </div>
+
+                                        <div class="card bg-dark text-light border-success">
+                                             <div class="card-body">
+                                                  <div
+                                                       class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                                       <h3 class="card-title fw-bold mb-0">Bocconcini Raw Nocciola &amp;
+                                                            Cacao</h3>
+                                                       <span class="badge text-warning fs-4 fw-bold p-0">€ 3.50</span>
+                                                  </div>
+                                                  <span class="badge bg-secondary mb-2 origin">Gluten-Free &amp;
+                                                       Raw</span>
+                                                  <p class="card-text"><i>
+                                                            Senza cottura, con farina di mandorle, nocciole Piemonte IGP
+                                                            e datteri Medjool. Zero briciole.
+                                                       </i></p>
+                                             </div>
+                                        </div>
+
+                                        <div class="card bg-dark text-light border-success">
+                                             <div class="card-body">
+                                                  <div
+                                                       class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                                       <h3 class="card-title fw-bold mb-0">Edamame Tostati al Sale
+                                                            Marino</h3>
+                                                       <span class="badge text-warning fs-4 fw-bold p-0">€ 4.00</span>
+                                                  </div>
+                                                  <span class="badge bg-secondary mb-2 origin">No Grease &amp;
+                                                       Vegan</span>
+                                                  <p class="card-text"><i>
+                                                            Fagioli di soia biologici tostati a secco con sale grigio di
+                                                            Guérande. Ricchi di proteine e clean-fingers.
+                                                       </i></p>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
                          </div>
                     </div>
                </div>
           </div>
-     </div>
+     </section>
 
      <!-- Bootstrap 5.3 JS Bundle -->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

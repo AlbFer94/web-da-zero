@@ -36,13 +36,30 @@ body {
 }
 
 /* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+
+.navbar-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: height var(--transition-fast);
+}
+
+@media (min-width: 992px) {
+  .navbar-logo {
+    height: 60px;
+  }
+}
+
+/* ==========================================================================
    HERO SECTION
    ========================================================================== */
 
 #hero {
   background: var(--gradient-bg-main),
     url('../assets/img/cafe-hero.jpg') center / cover no-repeat;
-  min-height: 85vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
 }
@@ -89,6 +106,30 @@ body {
   line-height: 1.25;
 }
 
+/* Ottimizzazioni Hero per Mobile Extra Small (<576px) */
+@media (max-width: 575.98px) {
+  #hero {
+    min-height: auto;
+    padding-top: 1.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  .hero-feature-card {
+    padding: 0.75rem 0.35rem;
+    border-radius: 10px;
+  }
+
+  .hero-feature-icon {
+    font-size: 1.35rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .hero-feature-text {
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+}
+
 /* ==========================================================================
    VISION SECTION
    ========================================================================== */
@@ -97,7 +138,13 @@ body {
   background: var(--gradient-surface);
   margin-block: 1.2rem;
   border-radius: var(--radius-card-sm);
-  padding: 1.55rem;
+  padding: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .vision-card {
+    padding: 2.25rem;
+  }
 }
 
 .vision-feature-icon {
@@ -161,6 +208,7 @@ body {
 }
 
 /* Segmented Control Pill (Nav Tabs) */
+/* Segmented Control Pill (Nav Tabs) */
 .menu-nav-tabs {
   display: inline-flex;
   align-items: center;
@@ -169,6 +217,7 @@ body {
   border-radius: var(--radius-card-lg);
   padding: 6px;
   gap: 4px;
+  max-width: 100%;
 }
 
 .menu-nav-tabs .nav-link {
@@ -208,10 +257,42 @@ body {
   flex-shrink: 0;
 }
 
+/* Nav tabs su mobile XS */
+@media (max-width: 575.98px) {
+  .menu-nav-tabs {
+    width: 100%;
+    max-width: 440px;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .menu-nav-tabs .nav-link {
+    flex: 1 1 50%;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.88rem;
+    min-height: 48px;
+  }
+
+  .menu-nav-tabs .nav-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
 .tab-pane.active {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+/* Griglia Desktop a 2 colonne per il Menù e il Collapse Vegan */
+@media (min-width: 992px) {
+  .tab-pane.active,
+  .menu-items-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
 }
 
 .card-text {
@@ -220,8 +301,32 @@ body {
 
 .card {
   border-radius: var(--radius-card-sm);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 183, 3, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card.border-success {
+  border-color: rgba(25, 135, 84, 0.65) !important;
+}
+
+.card.border-success:hover {
+  border-color: rgba(25, 135, 84, 1) !important;
 }
 
 .card-title {
   font-family: serif;
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+  .card-title {
+    font-size: 1.35rem;
+  }
 }
