@@ -302,6 +302,7 @@ body {
 .card {
   border-radius: var(--radius-card-sm);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-sm);
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -329,4 +330,61 @@ body {
   .card-title {
     font-size: 1.35rem;
   }
+}
+
+/* ==========================================================================
+   LUDOTECA SECTION (#ludoteca)
+   ========================================================================== */
+
+#ludoteca {
+  background: var(--gradient-bg-main);
+}
+
+#ludoteca .card {
+  background-color: #171b1e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.32), 0 1px 3px rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-card-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+#ludoteca .card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 183, 3, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.48), 0 0 12px rgba(255, 183, 3, 0.12);
+}
+
+#ludoteca .step-badge {
+  background-color: var(--primary-amber);
+  color: #121517;
+  font-family: var(--main-font);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(255, 183, 3, 0.25);
+  flex-shrink: 0;
+}
+
+#ludoteca .card-title {
+  font-family: serif;
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  #ludoteca .card-title {
+    font-size: 1.35rem;
+  }
+}
+
+#ludoteca .card-text {
+  color: var(--accent-wood);
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
