@@ -1,75 +1,4 @@
-
-// ==========================================
-// 1. Dati per le card della sezione Ludoteca ("Come Funziona la Serata")
-// ==========================================
-const ludotecaSteps = [
-    {
-        step: "01",
-        title: "Scegli la Durata",
-        description: "Tavolo riservato da 2 a 4 ore con sedute ergonomiche e spazio dedicato alla plancia."
-    },
-    {
-        step: "02",
-        title: "Chiedi al Game Master",
-        description: "Niente manuali da 40 pagine: Il nostro sommelier del gioco vi spiega le regole in 5 minuti."
-    },
-    {
-        step: "03",
-        title: 'Snack "Salva-Carte"',
-        description: "Finger food studiato appositamente per non ungere le carte, con comodi sottobicchieri anti-rovesciamento."
-    },
-    {
-        step: "04",
-        title: "Tira i Dadi e Rilassati",
-        description: "Luci calde, playlist lo-fi e caffè filtro rifornito regolarmente al tavolo."
-    }
-];
-
-// ==========================================
-// 2. Dati per le card dei giochi nel Carosello ("I Giochi Più Amati")
-// ==========================================
-const carouselGames = [
-    {
-        id: "catan",
-        title: "Catan",
-        badge: "Strategia & Commercio",
-        description: "Commercia, costruisci ed espandi il tuo insediamento davanti a una tazza di specialty coffee.",
-        image: "../assets/img/catan.jpg",
-        alt: "Clienti che giocano a Catan al bistrò"
-    },
-    {
-        id: "wingspan",
-        title: "Wingspan",
-        badge: "Engine Building & Relax",
-        description: "Attira le specie più affascinanti nella tua riserva naturale sorseggiando un rilassante matcha latte.",
-        image: "../assets/img/wingspan.jpg",
-        alt: "Clienti che giocano a Wingspan al bistrò"
-    },
-    {
-        id: "ticket-to-ride",
-        title: "Ticket to Ride",
-        badge: "Avventura su Rotaia",
-        description: "Collega le capitali su rotaia e completa i tuoi itinerari segreti tra risate e snack salva-carte.",
-        image: "../assets/img/ticket-to-ride.jpg",
-        alt: "Clienti che giocano a Ticket to Ride al bistrò"
-    },
-    {
-        id: "terraforming-mars",
-        title: "Terraforming Mars",
-        badge: "Fantascienza & Strategia",
-        description: "Guida una corporazione per rendere abitabile il pianeta rosso in una serata di pura strategia ed espresso d'autore.",
-        image: "../assets/img/terraforming-mars.jpg",
-        alt: "Clienti che giocano a Terraforming Mars al bistrò"
-    },
-    {
-        id: "codenames",
-        title: "Codenames",
-        badge: "Party Game a Squadre",
-        description: "Sfida gli amici a colpi di intuizione e parole chiave nel party game a squadre più divertente e frenetico.",
-        image: "../assets/img/codenames.jpg",
-        alt: "Clienti che giocano a Codenames al bistrò"
-    }
-];
+import { ludotecaSteps, carouselGames, menuItems } from "./data.js";
 
 /* Gestione cards Informative (Ludoteca) */
 
@@ -139,5 +68,40 @@ function getGame(gameItem, isActive = false) {
     </div>`;
 }
 
+/* Gestione cards del menù */
+
+function getMenuCard(item) {
+    const borderClass = item.category === "vegano" ? " border-success" : "";
+
+    return `<div class="card bg-dark text-light${borderClass}">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                <h3 class="card-title fw-bold mb-0">${item.title}</h3>
+                <span class="badge text-warning fs-4 fw-bold p-0">${item.price}</span>
+            </div>
+            <span class="badge bg-secondary mb-2 origin">${item.badge}</span>
+            <p class="card-text">
+                <i>${item.description}</i>
+            </p>
+        </div>
+    </div>`;
+}
+
+function renderMenuSection(items, containerId) {
+    const container = document.getElementById(containerId);
+    let htmlContent = "";
+    for (const item of items) {
+        htmlContent += getMenuCard(item);
+    }
+    container.innerHTML = htmlContent;
+}
+
+const caffetteriaList = menuItems.filter(item => item.category === "caffetteria");
+const snackList = menuItems.filter(item => item.category === "snack");
+const veganList = menuItems.filter(item => item.category === "vegano");
+
+renderMenuSection(caffetteriaList, "nav-caffetteria");
+renderMenuSection(snackList, "nav-snack");
+renderMenuSection(veganList, "vegan-contenitore");
 renderSteps(ludotecaSteps);
 renderGames(carouselGames);
