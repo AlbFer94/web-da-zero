@@ -164,5 +164,52 @@ export const menuItems = [
         description: "Fagioli di soia biologici tostati a secco con sale grigio di Guérande. Ricchi di proteine e clean-fingers.",
         category: "vegano"
     }
+];
 
+// ==========================================
+// 4. Dati per le card delle Recensioni
+// ==========================================
+export const recensioni = [
+    {
+        nome: "Matteo & Beatrice",
+        badge: "MB",
+        stelle: 5,
+        text: "Posto fantastico per una serata diversa dal solito. Abbiamo giocato a Catan sorseggiando un Chemex per due spettacolare. Game Master gentilissimo e paziente nelle spiegazioni!"
+    },
+    {
+        nome: "Giulia Rossi",
+        badge: "GR",
+        stelle: 5,
+        text: "La formula dello snack salva-carte è un'idea geniale: niente dita unte sulle carte di Wingspan! E il Nitro Cold Brew alla spina è semplicemente il migliore in città."
+    },
+    {
+        nome: "Luca Moretti",
+        badge: "LM",
+        stelle: 4,
+        text: "Atmosfera rilassata con playlist lo-fi perfetta per concentrarsi sulle partite. Vasta selezione di giochi da tavolo moderni e specialty coffee di altissimo livello."
+    },
+    {
+        nome: "Elena & Sofia",
+        badge: "ES",
+        stelle: 5,
+        text: "Siamo state per una sfida pomeridiana a Codenames. I biscotti artigianali 8-Bit e il matcha latte d'avena hanno reso l'esperienza davvero memorabile. Torneremo sicuramente!"
+    },
+    {
+        nome: "Davide Conti",
+        badge: "DC",
+        stelle: 5,
+        text: "Tavoli ampi ed ergonomici pensati appositamente per le plance giganti come Terraforming Mars. Servizio impeccabile e caffè filtro rifornito con regolarità."
+    },
+    {
+        nome: "Chiara Valenti",
+        badge: "CV",
+        stelle: 4,
+        text: "Consigliatissimo sia per chi è appassionato di giochi da tavolo che per chi vuole solo gustare un espresso d'autore in un ambiente accogliente e giovanile."
+    },
+    {
+        nome: "Marco & Filippo",
+        badge: "MF",
+        stelle: 5,
+        text: "Serata epica a Ticket to Ride! Niente manuali da studiare grazie ai consigli del master: in cinque minuti eravamo già in partita. Un format unico e imperdibile!"
+    }
 ];

@@ -1,4 +1,4 @@
-import { ludotecaSteps, carouselGames, menuItems } from "./data.js";
+import { ludotecaSteps, carouselGames, menuItems, recensioni } from "./data.js";
 
 /* Gestione cards Informative (Ludoteca) */
 
@@ -58,7 +58,7 @@ function getGame(gameItem, isActive = false) {
                             <h3 class="card-title fw-bold mb-0">${gameItem.title}</h3>
                             <span class="badge bg-warning text-dark fw-semibold">${gameItem.badge}</span>
                         </div>
-                        <p class="card-text text-secondary mb-0">
+                        <p class="card-text mb-0">
                             ${gameItem.description}
                         </p>
                     </div>
@@ -96,6 +96,43 @@ function renderMenuSection(items, containerId) {
     container.innerHTML = htmlContent;
 }
 
+/* Gestione cards di recensione */
+
+function renderReview(listaReview) {
+    const reviewContainer = document.getElementById("recensioni-contenitore");
+
+    let htmlDaScrivere = "";
+
+    for (const thisReview of listaReview) {
+        htmlDaScrivere += getReviwCard(thisReview);
+    }
+
+    reviewContainer.innerHTML = htmlDaScrivere;
+}
+
+function getReviwCard(reviewItem) {
+    return `                    <div class="card bg-dark text-light">
+                         <div class="card-body p-3 p-md-4">
+                              <div class="d-flex justify-content-between align-items-baseline gap-2 mb-2">
+                                   <div class="header d-flex align-items-center gap-3 mb-2">
+                                        <span class="badge step-badge">${reviewItem.badge}</span>
+                                        <h3 class="card-title fw-bold mb-0">${reviewItem.nome}</h3>
+                                   </div>
+                                   <div class="rating-star">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                             <path
+                                                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                        </svg>
+                                   </div>
+                              </div>
+                              <p class="card-text mb-0">
+                                   ${reviewItem.text}
+                              </p>
+                         </div>
+                    </div>`;
+}
+
 const caffetteriaList = menuItems.filter(item => item.category === "caffetteria");
 const snackList = menuItems.filter(item => item.category === "snack");
 const veganList = menuItems.filter(item => item.category === "vegano");
@@ -105,3 +142,4 @@ renderMenuSection(snackList, "nav-snack");
 renderMenuSection(veganList, "vegan-contenitore");
 renderSteps(ludotecaSteps);
 renderGames(carouselGames);
+renderReview(recensioni);
