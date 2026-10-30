@@ -103,7 +103,8 @@ function renderReview(listaReview) {
 
     let htmlDaScrivere = "";
 
-    for (const thisReview of listaReview) {
+    for (let i = 0; i < 4; i++) {
+        const thisReview = listaReview[i];
         htmlDaScrivere += getReviewCard(thisReview);
     }
 
@@ -133,6 +134,18 @@ function getReviewCard(reviewItem) {
     </div>`;
 }
 
+function renderMoreReviews(listaReview) {
+    const containerCards = document.getElementById("more-reviews");
+
+    let htmlDaScrivere = "";
+
+    for (let i = 4; i < listaReview.length; i++) {
+        const thisCard = listaReview[i];
+        htmlDaScrivere += getReviewCard(thisCard);
+    }
+
+    containerCards.innerHTML = htmlDaScrivere;
+}
 const caffetteriaList = menuItems.filter(item => item.category === "caffetteria");
 const snackList = menuItems.filter(item => item.category === "snack");
 const veganList = menuItems.filter(item => item.category === "vegano");
@@ -143,3 +156,4 @@ renderMenuSection(veganList, "vegan-contenitore");
 renderSteps(ludotecaSteps);
 renderGames(carouselGames);
 renderReview(recensioni);
+renderMoreReviews(recensioni);
