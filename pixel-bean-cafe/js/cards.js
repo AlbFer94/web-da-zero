@@ -1,4 +1,4 @@
-import { ludotecaSteps, carouselGames, menuItems, recensioni } from "./data.js";
+import { ludotecaSteps, carouselGames, menuItems, recensioni as defaultReviews } from "./data.js";
 
 /* Gestione cards Informative (Ludoteca) */
 
@@ -146,14 +146,91 @@ function renderMoreReviews(listaReview) {
 
     containerCards.innerHTML = htmlDaScrivere;
 }
+
+function saveReviewsToStorage(list) {
+    const datoSerializzato = JSON.stringify(list);
+    localStorage.setItem("reviews", datoSerializzato);
+}
+
+function loadReviews() {
+    const datoserializzato = localStorage.getItem("reviews");
+
+    if (!datoserializzato) return null;
+    try {
+        return JSON.parse(datoserializzato);
+    } catch (e) {
+        return null;
+    }
+
+}
+
+/* Gestione invio nuova recensione */
+
+function onFormSubmit(event) {
+    event.preventDefault();
+
+    const nomeField = document.getElementById("reviewNome");
+    const valutazioneField = document.getElementById("reviewValutazione");
+    const testoField = document.getElementById("reviewTesto");
+
+    const nuovoNome = nomeField.value.trim();
+    const nuovaValutazione = valutazioneField.value;
+    const nuovoTesto = testoField.value.trim();
+
+    if (!nuovoNome || !nuovaValutazione || !nuovoTesto) {
+        alert("Tutti i campi sono obbligatori.");
+        return;
+    }
+
+    const newReview = {
+        nome: nuovoNome,
+        badge: nuovoNome.slice(0, 2).toUpperCase(),
+        stelle: Number(nuovaValutazione),
+        text: nuovoTesto,
+    };
+
+    recensioni.unshift(newReview); // Aggiunge in cima all'array
+
+    saveReviewsToStorage(recensioni);
+
+    // Aggiorna la pagina con la nuova recensione
+    renderReview(recensioni);
+    renderMoreReviews(recensioni);
+
+
+    event.target.reset();
+
+    // Chiude il modale Bootstrap
+    const modalEl = document.getElementById("recensioneModal");
+    if (window.bootstrap && modalEl) {
+        const modalInstance = bootstrap.Modal.getInstance(modalEl);
+        if (modalInstance) {
+            modalInstance.hide();
+        }
+    }
+}
+
 const caffetteriaList = menuItems.filter(item => item.category === "caffetteria");
 const snackList = menuItems.filter(item => item.category === "snack");
 const veganList = menuItems.filter(item => item.category === "vegano");
+const form = document.getElementById("formRecensione");
+if (form) {
+    form.addEventListener("submit", onFormSubmit);
+}
 
 renderMenuSection(caffetteriaList, "nav-caffetteria");
 renderMenuSection(snackList, "nav-snack");
 renderMenuSection(veganList, "vegan-contenitore");
 renderSteps(ludotecaSteps);
 renderGames(carouselGames);
+
+// Carica recensioni da localStorage oppure usa i dati di default
+let recensioni = loadReviews();
+
+if (recensioni === null) {
+    recensioni = [...defaultReviews];
+    saveReviewsToStorage(recensioni);
+}
+
 renderReview(recensioni);
 renderMoreReviews(recensioni);
