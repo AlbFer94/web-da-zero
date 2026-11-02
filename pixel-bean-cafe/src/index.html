@@ -52,7 +52,6 @@
                               </a>
                               <ul class="dropdown-menu">
                                    <li><a class="dropdown-item" href="#ludoteca">Giochi da Tavolo</a></li>
-                                   <li><a class="dropdown-item" href="#">Eventi</a></li>
                                    <li>
                                         <hr class="dropdown-divider">
                                    </li>
@@ -332,7 +331,6 @@
                </div>
           </div>
      </section>
-
      <!-- Sezione Recensioni -->
      <section class="py-5" id="recensioni">
           <div class="container">
@@ -346,14 +344,15 @@
                </div>
                <div class="menu-items-grid d-flex flex-column gap-3" id="recensioni-contenitore">
                </div>
+               <div class="collapse mt-3" id="toggle-reviews">
+                    <div class="menu-items-grid d-flex flex-column gap-3" id="more-reviews">
+                    </div>
+               </div>
+
                <div class="d-flex align-items-center gap-2 gap-sm-3 py-2">
                     <a class="badge text-warning border border-warning text-decoration-none fs-6 flex-shrink-0"
                          data-bs-toggle="collapse" href="#toggle-reviews" role="button" aria-expanded="false"
                          aria-controls="toggle-reviews">Leggi Tutte le Recensioni</a>
-               </div>
-               <div class="collapse mt-3" id="toggle-reviews">
-                    <div class="menu-items-grid d-flex flex-column gap-3" id="more-reviews">
-                    </div>
                </div>
                <div class="mt-4">
                     <button type="button"
@@ -375,20 +374,27 @@
                     <div class="modal-dialog modal-dialog-centered">
                          <div class="modal-content bg-dark text-light border border-secondary">
                               <div class="modal-header border-secondary">
-                                   <h2 class="modal-title fs-5 fw-bold text-warning" id="recensioneModalLabel">Lascia una Recensione</h2>
-                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+                                   <h2 class="modal-title fs-5 fw-bold text-warning" id="recensioneModalLabel">Lascia
+                                        una Recensione</h2>
+                                   <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Chiudi"></button>
                               </div>
                               <div class="modal-body">
-                                   <p class="menu-sub-text mb-3">Raccontaci la tua esperienza al bistrot: i giochi provati, il caffè e l'atmosfera al tavolo.</p>
+                                   <p class="menu-sub-text mb-3">Raccontaci la tua esperienza al bistrot: i giochi
+                                        provati, il caffè e l'atmosfera al tavolo.</p>
                                    <form id="formRecensione">
                                         <div class="mb-3">
                                              <label for="reviewNome" class="form-label fw-semibold">Il tuo Nome</label>
-                                             <input type="text" class="form-control" id="reviewNome" name="nome" placeholder="Es. Marco Rossi" required>
+                                             <input type="text" class="form-control" id="reviewNome" name="nome"
+                                                  placeholder="Es. Marco Rossi" required>
                                         </div>
                                         <div class="mb-3">
-                                             <label for="reviewValutazione" class="form-label fw-semibold">Valutazione</label>
-                                             <select class="form-select" id="reviewValutazione" name="valutazione" required>
-                                                  <option value="" selected disabled>Scegli una valutazione da 1 a 5 stelle...</option>
+                                             <label for="reviewValutazione"
+                                                  class="form-label fw-semibold">Valutazione</label>
+                                             <select class="form-select" id="reviewValutazione" name="valutazione"
+                                                  required>
+                                                  <option value="" selected disabled>Scegli una valutazione da 1 a 5
+                                                       stelle...</option>
                                                   <option value="5">★★★★★ - 5 Stelle (Eccellente)</option>
                                                   <option value="4">★★★★☆ - 4 Stelle (Molto Buono)</option>
                                                   <option value="3">★★★☆☆ - 3 Stelle (Buono)</option>
@@ -397,14 +403,18 @@
                                              </select>
                                         </div>
                                         <div class="mb-3">
-                                             <label for="reviewTesto" class="form-label fw-semibold">La tua Recensione</label>
-                                             <textarea class="form-control" id="reviewTesto" name="recensione" rows="3" placeholder="Com'è andata la serata?" required></textarea>
+                                             <label for="reviewTesto" class="form-label fw-semibold">La tua
+                                                  Recensione</label>
+                                             <textarea class="form-control" id="reviewTesto" name="recensione" rows="3"
+                                                  placeholder="Com'è andata la serata?" required></textarea>
                                         </div>
                                    </form>
                               </div>
                               <div class="modal-footer border-secondary">
-                                   <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Chiudi</button>
-                                   <button type="submit" form="formRecensione" class="btn btn-warning fw-semibold">Invia Recensione</button>
+                                   <button type="button" class="btn btn-outline-secondary"
+                                        data-bs-dismiss="modal">Chiudi</button>
+                                   <button type="submit" form="formRecensione" class="btn btn-warning fw-semibold">Invia
+                                        Recensione</button>
                               </div>
                          </div>
                     </div>
