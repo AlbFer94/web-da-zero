@@ -134,7 +134,7 @@ body {
    VISION SECTION
    ========================================================================== */
 
-.vision-card {
+.vision-card, .banner-card{
   background: var(--gradient-surface);
   margin-block: 1.2rem;
   border-radius: var(--radius-card-sm);
@@ -163,7 +163,7 @@ body {
   flex-direction: column;
 }
 
-.vision-text p {
+.vision-text p, .banner-card p {
   color: var(--accent-wood);
 }
 
