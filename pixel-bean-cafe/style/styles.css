@@ -134,7 +134,7 @@ body {
    VISION SECTION
    ========================================================================== */
 
-.vision-card, .banner-card{
+.vision-card, .banner-card, #footer{
   background: var(--gradient-surface);
   margin-block: 1.2rem;
   border-radius: var(--radius-card-sm);
