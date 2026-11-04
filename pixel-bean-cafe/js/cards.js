@@ -217,6 +217,37 @@ const form = document.getElementById("formRecensione");
 if (form) {
     form.addEventListener("submit", onFormSubmit);
 }
+const subscriptionForm = document.getElementById("newsletter-form");
+/* subscriptionForm.addEventListener("submit", onSubscriptionSubmit);
+ */
+/* gestione form newsletter */
+
+/* function onSubscriptionSubmit(event) {
+    event.preventDefault();
+
+    const emailField = document.getElementById("newsletter-email");
+    const nuovaEmail = emailField.value;
+
+    if (!nuovaEmail) {
+        alert("Non hai specificato un indirizzo email valido");
+        return;
+    }
+
+    renderFeedback(false);
+
+}
+
+function renderFeedback(boolean) {
+    const feedbackContainer = document.getElementById("newsletter-feedback");
+
+    if (boolean === false) {
+        feedbackContainer.innerHTML = `<p>Benvenuto!</p>`
+    } else {
+        feedbackContainer.innerHTML = `<p>Errore!</p>`
+    }
+}
+ */
+/* Page init */
 
 renderMenuSection(caffetteriaList, "nav-caffetteria");
 renderMenuSection(snackList, "nav-snack");
