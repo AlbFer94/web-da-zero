@@ -552,7 +552,7 @@
                               <div class="input-group">
                                    <input type="email" id="newsletter-email" name="email" class="form-control"
                                         placeholder="La tua email" autocomplete="email" required>
-                                   <button type="button" class="btn btn-warning fw-semibold"
+                                   <button type="submit" class="btn btn-warning fw-semibold"
                                         commandfor="newsletterSuccessDialog" command="show-modal">Iscriviti</button>
                               </div>
                               <!-- il JS scrive il messaggio di conferma o di errore -->
@@ -573,27 +573,11 @@
           </div>
      </footer>
      <!-- Dialog: iscrizione riuscita -->
-     <dialog class="dialog" id="newsletterSuccessDialog" aria-labelledby="newsletterSuccessTitle" data-bs-theme="dark">
-          <div class="dialog-header">
-               <h2 class="dialog-title" id="newsletterSuccessTitle">
-                    <i class="bi bi-check-circle-fill me-2" aria-hidden="true" class="bg-success"></i>Sei nella lista
-                    dei tavoli!
-               </h2>
-          </div>
-          <div class="dialog-body">
-               <p>
-                    Abbiamo registrato <strong id="newsletterSuccessEmail"></strong>.
-                    Da ora riceverai in anteprima tornei, serate a tema e i nuovi arrivi della ludoteca.
-               </p>
-               <p class="mb-0">Al massimo una email a settimana, e ti cancelli quando vuoi.</p>
-               <p class="dialog-note">Progetto dimostrativo: nessuna email verrà davvero inviata.</p>
-          </div>
-          <div class="dialog-footer">
-               <button type="button" class="btn btn-outline-secondary" commandfor="newsletterSuccessDialog"
-                    command="close">Chiudi</button>
-               <a href="./prenota.html" class="btn btn-warning fw-semibold">Prenota un tavolo</a>
-          </div>
-     </dialog>
+     <div id="modal">
+          <dialog class="dialog" id="newsletterSuccessDialog" aria-labelledby="newsletterSuccessTitle"
+               data-bs-theme="dark">
+          </dialog>
+     </div>
      <!-- Bootstrap 5.3 JS Bundle -->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

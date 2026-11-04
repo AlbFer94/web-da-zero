@@ -1,4 +1,4 @@
-import { ludotecaSteps, carouselGames, menuItems, recensioni as defaultReviews } from "./data.js";
+import { ludotecaSteps, carouselGames, menuItems, recensioni as defaultReviews, iscritti } from "./data.js";
 
 /* Gestione cards Informative (Ludoteca) */
 
@@ -217,36 +217,91 @@ const form = document.getElementById("formRecensione");
 if (form) {
     form.addEventListener("submit", onFormSubmit);
 }
-const subscriptionForm = document.getElementById("newsletter-form");
-/* subscriptionForm.addEventListener("submit", onSubscriptionSubmit);
- */
-/* gestione form newsletter */
 
-/* function onSubscriptionSubmit(event) {
+/* gestione form newsletter */
+const subscriptionForm = document.getElementById("newsletter-form");
+subscriptionForm.addEventListener("submit", onSubscription);
+
+
+function onSubscription(event) {
     event.preventDefault();
+    const dialog = document.querySelector(".dialog");
 
     const emailField = document.getElementById("newsletter-email");
-    const nuovaEmail = emailField.value;
+    const newEmail = emailField.value;
+    let isSubscribed = false;
 
-    if (!nuovaEmail) {
-        alert("Non hai specificato un indirizzo email valido");
+    if (!newEmail) {
+        alert("Nessun indirizzo valido inserito.");
+        return;
+    } else if (iscritti.includes(newEmail)) {
+        isSubscribed = true;
+        renderFeedback(isSubscribed, newEmail);
         return;
     }
 
-    renderFeedback(false);
+    iscritti.push(newEmail);
+    saveSubscription(iscritti);
 
+    renderFeedback(isSubscribed, newEmail);
+    dialog.showModal();
+    event.target.reset();
 }
 
-function renderFeedback(boolean) {
-    const feedbackContainer = document.getElementById("newsletter-feedback");
-
+function renderFeedback(boolean, input) {
+    let html = document.getElementById("newsletterSuccessDialog");
     if (boolean === false) {
-        feedbackContainer.innerHTML = `<p>Benvenuto!</p>`
+        html.innerHTML = `               <div class="dialog-header">
+                    <h2 class="dialog-title" id="newsletterSuccessTitle">
+                         <i class="bi bi-check-circle-fill me-2" aria-hidden="true" class="bg-success"></i>Sei nella
+                         lista
+                         dei tavoli!
+                    </h2>
+               </div>
+               <div class="dialog-body">
+                    <p>
+                         Abbiamo registrato <strong id="newsletterSuccessEmail">${input}</strong>.
+                         Da ora riceverai in anteprima tornei, serate a tema e i nuovi arrivi della ludoteca.
+                    </p>
+                    <p class="mb-0">Al massimo una email a settimana, e ti cancelli quando vuoi.</p>
+                    <p class="dialog-note">Progetto dimostrativo: nessuna email verrà davvero inviata.</p>
+               </div>
+               <div class="dialog-footer">
+                    <button type="button" class="btn btn-outline-secondary" commandfor="newsletterSuccessDialog"
+                         command="close">Chiudi</button>
+                    <a href="./prenota.html" class="btn btn-warning fw-semibold">Prenota un tavolo</a>
+               </div>`;
     } else {
-        feedbackContainer.innerHTML = `<p>Errore!</p>`
+        html.innerHTML = `          <div class="dialog-header">
+               <h2 class="dialog-title" id="newsletterErrorTitle">
+                    <i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i>Iscrizione non riuscita
+               </h2>
+          </div>
+          <div class="dialog-body">
+               <p id="newsletterErrorMessage" class="mb-0">
+                    "Questo indirizzo:<strong id="newsletterSuccessEmail">${input}</strong>. E' già nella nostra lista: riceverai le prossime novità senza fare altro."
+               </p>
+          </div>
+          <div class="dialog-footer">
+               <button type="button" class="btn btn-warning fw-semibold" commandfor="newsletterErrorDialog"
+                    command="close">Chiudi</button>
+          </div>`;
     }
 }
- */
+
+/* gestione localStorage iscritti newsletter */
+
+function saveSubscription(list) {
+    const datoSerializzato = JSON.stringify(list);
+    localStorage.setItem("subscriptions", datoSerializzato);
+}
+
+function loadSubscriptions() {
+    const datoSerializzato = localStorage.getItem("subscriptions");
+    const parsedData = JSON.parse(datoSerializzato);
+    return parsedData;
+}
+
 /* Page init */
 
 renderMenuSection(caffetteriaList, "nav-caffetteria");

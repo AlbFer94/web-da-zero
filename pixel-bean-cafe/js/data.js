@@ -213,3 +213,9 @@ export const recensioni = [
         text: "Serata epica a Ticket to Ride! Niente manuali da studiare grazie ai consigli del master: in cinque minuti eravamo già in partita. Un format unico e imperdibile!"
     }
 ];
+
+// ==========================================
+// 5. indirizzi email per gli iscritti alla NewsLetter
+// ==========================================
+
+export const iscritti = [];
