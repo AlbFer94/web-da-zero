@@ -134,7 +134,7 @@ body {
    VISION SECTION
    ========================================================================== */
 
-.vision-card, .banner-card, #footer{
+.vision-card, .banner-card{
   background: var(--gradient-surface);
   margin-block: 1.2rem;
   border-radius: var(--radius-card-sm);
@@ -402,4 +402,87 @@ body {
   justify-content: center;
   font-size: 1.4rem;
   font-family: var(--main-font);
+}
+
+/* Footer Section */
+
+#footer {
+  background: var(--gradient-surface);
+  border-top: 1px solid rgba(255, 183, 3, 0.15);
+  color: var(--accent-wood);
+}
+ 
+.footer-title {
+  font-family: serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-amber);
+  margin-bottom: 1rem;
+}
+ 
+.footer-text {
+  color: var(--accent-wood);
+  opacity: 0.85;
+  font-size: 0.9rem;
+}
+ 
+/* Orari: giorni a sinistra, ore allineate a destra */
+.footer-hours {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1rem;
+  margin: 0;
+  font-size: 0.9rem;
+}
+ 
+.footer-hours dt {
+  font-weight: 400;
+  color: var(--accent-wood);
+}
+ 
+.footer-hours dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 500;
+  color: var(--coffee-cream);
+  font-variant-numeric: tabular-nums;
+}
+ 
+.footer-hours .footer-closed {
+  color: var(--primary-amber);
+}
+ 
+/* Campo email scuro */
+#footer .form-control {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--coffee-cream);
+}
+ 
+#footer .form-control::placeholder {
+  color: var(--accent-wood);
+  opacity: 0.55;
+}
+ 
+#footer .form-control:focus {
+  border-color: var(--primary-amber);
+  box-shadow: 0 0 0 0.2rem rgba(255, 183, 3, 0.25);
+}
+ 
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.85rem;
+  color: var(--accent-wood);
+  opacity: 0.75;
+}
+ 
+.footer-link {
+  color: var(--accent-wood);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+ 
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: var(--primary-amber);
 }

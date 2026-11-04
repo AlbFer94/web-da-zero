@@ -187,7 +187,7 @@
      </section>
 
      <!-- Menu Section -->
-     <section class="py-5" id="menu">
+     <section class="py-5 px-3" id="menu">
           <div class="container">
                <div class="row mb-4 text-start text-md-start">
                     <div class="col-12 col-lg-8 mx-auto mx-lg-0">
@@ -275,7 +275,7 @@
      </section>
 
      <!-- Ludoteca Section -->
-     <section class="py-5" id="ludoteca">
+     <section class="py-5 px-3" id="ludoteca">
           <div class="container">
                <div class="row mb-4 text-start text-md-start">
                     <div class="col-12 col-lg-8 mx-auto mx-lg-0">
@@ -289,7 +289,7 @@
           </div>
 
           <!-- Carosello Giochi Più Amati -->
-          <div class="container mt-5">
+          <div class="container mt-5 px-3">
                <div class="row mb-4 text-start">
                     <div class="col-12 col-lg-8">
                          <p class="text-warning fs-6 text-uppercase fw-semibold mb-1">La Nostra Selezione</p>
@@ -333,7 +333,7 @@
           </div>
      </section>
      <!-- Sezione Recensioni -->
-     <section class="py-5" id="recensioni">
+     <section class="py-5 px-3" id="recensioni">
           <div class="container">
                <div class="row mb-4 text-start text-md-start">
                     <div class="col-12 col-lg-8 mx-auto mx-lg-0">
@@ -356,7 +356,7 @@
                          data-bs-toggle="collapse" href="#toggle-reviews" role="button" aria-expanded="false"
                          aria-controls="toggle-reviews">Leggi Tutte le Recensioni</a>
 
-                    <a class="btn btn-warning fw-semibold d-inline-flex align-items-center gap-2 shadow-sm"
+                    <a class="btn btn-warning fw-semibold d-inline-flex align-items-center justify-content-center gap-2 shadow-sm text-sm-center"
                          data-bs-toggle="modal" data-bs-target="#recensioneModal">
                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                               class="bi bi-chat-dots flex-shrink-0" viewBox="0 0 16 16" aria-hidden="true">
@@ -510,83 +510,66 @@
      </section>
 
      <!-- footer -->
-     <footer id="footer" class="bg-dark text-white pt-5 pb-3 font-sans">
+     <footer id="footer" class="pt-5 pb-4 px-3">
           <div class="container">
-               <!-- Riga Principale dei Contenuti -->
-               <div class="row g-4 justify-content-between align-items-start">
+               <div class="row g-4 g-lg-5">
 
-                    <!-- Colonna 1: Logo e Descrizione -->
-                    <div class="col-lg-3 col-md-6">
-                         <a class="navbar-brand d-flex align-items-center gap-2 mb-3 text-white text-decoration-none"
-                              href="#">
-                              <img src="../assets/svg/logo.svg" alt="Logo" class="navbar-logo" width="48" height="48">
+                    <!-- Colonna 1: Logo e descrizione -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                         <a href="#hero" class="d-inline-block mb-3">
+                              <img src="../assets/svg/logo.svg" alt="The Pixel &amp; Bean Café, torna all'inizio"
+                                   class="navbar-logo" width="48" height="48">
                          </a>
-                         <p class="text-secondary small text-balance">
-                              Speciality coffee shop, pasticceria artigianale e una collezione curata di giochi da
-                              tavolo e postazioni retrogaming.
+                         <p class="footer-text mb-0">
+                              Specialty coffee, pasticceria artigianale e una collezione curata di giochi da tavolo
+                              e postazioni retrogaming.
                          </p>
-                         <!-- Icone Social (Opzionali, visibili sotto la descrizione nello screenshot) -->
-                         <div class="d-flex gap-3 text-secondary mt-3">
-                              <i class="bi bi-share"></i>
-                              <i class="bi bi-chat-right-text"></i>
-                              <i class="bi bi-camera"></i>
-                         </div>
                     </div>
 
-                    <!-- Colonna 2: Orari del Bistrot -->
-                    <div class="col-lg-3 col-md-6">
-                         <h5 class="fw-bold mb-3 text-serif text-amber">Orari del Bistrot</h5>
-                         <div class="d-flex justify-content-between small text-secondary">
-                              <ul class="list-unstyled mb-0 pe-2">
-                                   <li class="mb-2">Martedì - Giovedì</li>
-                                   <li class="mb-2">Venerdì - Sabato</li>
-                                   <li class="mb-2">Domenica</li>
-                                   <li class="mb-0">Lunedì</li>
-                              </ul>
-                              <ul class="list-unstyled mb-0 text-end fw-medium text-amber-light">
-                                   <li class="mb-2">08:30 - 23:30</li>
-                                   <li class="mb-2">08:30 - 01:30</li>
-                                   <li class="mb-2">10:00 - 23:00</li>
-                                   <li class="mb-0">Chiuso per ricarica</li>
-                              </ul>
-                         </div>
+                    <!-- Colonna 2: Orari -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                         <h2 class="footer-title">Orari del Bistrot</h2>
+                         <dl class="footer-hours">
+                              <dt>Martedì – Giovedì</dt>
+                              <dd>08:30 – 23:30</dd>
+                              <dt>Venerdì – Sabato</dt>
+                              <dd>08:30 – 01:30</dd>
+                              <dt>Domenica</dt>
+                              <dd>10:00 – 23:00</dd>
+                              <dt>Lunedì</dt>
+                              <dd class="footer-closed">Chiuso per ricarica</dd>
+                         </dl>
                     </div>
 
-                    <!-- Colonna 4: Newsletter Tavoli -->
-                    <div class="col-lg-3 col-md-6">
-                         <h5 class="fw-bold mb-3 text-serif">Newsletter Tavoli</h5>
-                         <p class="text-secondary small mb-3">
+                    <!-- Colonna 3: Newsletter (la logica JS gestisce l'evento dell'iscrizione) -->
+                    <div class="col-12 col-lg-4">
+                         <h2 class="footer-title">Newsletter Tavoli</h2>
+                         <p class="footer-text">
                               Iscriviti per ricevere in anteprima tornei, serate a tema e i nuovi arrivi della ludoteca.
                          </p>
-                         <form>
-                              <div class="mb-2">
-                                   <input type="email"
-                                        class="form-control form-control-sm bg-dark-subtle border-secondary text-white custom-input"
-                                        placeholder="Inserisci la tua email">
+                         <form id="newsletter-form">
+                              <label for="newsletter-email" class="visually-hidden">La tua email</label>
+                              <div class="input-group">
+                                   <input type="email" id="newsletter-email" name="email" class="form-control"
+                                        placeholder="La tua email" autocomplete="email" required>
+                                   <button type="submit" class="btn btn-warning fw-semibold">Iscriviti</button>
                               </div>
-                              <button type="submit"
-                                   class="btn btn-secondary btn-sm w-100 btn-custom-gray">Iscriviti</button>
+                              <!-- il JS scrive il messaggio di conferma o di errore -->
+                              <p id="newsletter-feedback" class="footer-text small mt-2 mb-0" aria-live="polite"></p>
                          </form>
                     </div>
 
                </div>
 
-               <!-- Barra Inferiore dei Diritti (Copyright & Policy) -->
-               <hr class="border-secondary mt-5 mb-4">
-               <div class="row align-items-center small text-secondary">
-                    <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
-                         &copy; 2026 Pixel & Bean Café S.r.l. - P.IVA IT09876543210. Tutti i diritti riservati.
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                         <a href="#" class="text-secondary text-decoration-none me-3 hover-white">Privacy Policy</a>
-                         <a href="#" class="text-secondary text-decoration-none me-3 hover-white">Termini &
-                              Condizioni</a>
-                         <a href="#" class="text-secondary text-decoration-none hover-white">Regolamento Tavoli</a>
-                    </div>
+               <!-- Barra inferiore -->
+               <div
+                    class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 mt-5 pt-4 text-center text-md-start">
+                    <p class="mb-0">&copy; 2026 The Pixel &amp; Bean Café · progetto dimostrativo, locale immaginario.
+                    </p>
+                    <a href="#ludoteca" class="footer-link">Come funziona la serata</a>
                </div>
           </div>
      </footer>
-
 
      <!-- Bootstrap 5.3 JS Bundle -->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -56,7 +56,7 @@ function getGame(gameItem, isActive = false) {
                     <div class="card-body p-4">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <h3 class="card-title fw-bold mb-0">${gameItem.title}</h3>
-                            <span class="badge bg-warning text-dark fw-semibold">${gameItem.badge}</span>
+                            <span class="badge bg-warning text-dark fw-semibold mx-2">${gameItem.badge}</span>
                         </div>
                         <p class="card-text mb-0">
                             ${gameItem.description}
