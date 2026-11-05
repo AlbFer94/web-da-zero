@@ -1,5 +1,4 @@
-import { ludotecaSteps, carouselGames, menuItems, recensioni as defaultReviews, iscritti } from "./data.js";
-
+import { ludotecaSteps, carouselGames, menuItems, recensioni as defaultReviews, iscritti as defaultIscritti } from "./data.js";
 /* Gestione cards Informative (Ludoteca) */
 
 function renderSteps(listaSteps) {
@@ -223,68 +222,85 @@ const subscriptionForm = document.getElementById("newsletter-form");
 subscriptionForm.addEventListener("submit", onSubscription);
 
 
+
 function onSubscription(event) {
     event.preventDefault();
-    const dialog = document.querySelector(".dialog");
+    const dialog = document.getElementById("newsletterDialog");
 
     const emailField = document.getElementById("newsletter-email");
     const newEmail = emailField.value;
     let isSubscribed = false;
 
-    if (!newEmail) {
-        alert("Nessun indirizzo valido inserito.");
-        return;
-    } else if (iscritti.includes(newEmail)) {
+    const userEmail = normalizeEmail(newEmail);
+
+    if (iscritti.includes(userEmail)) {
         isSubscribed = true;
-        renderFeedback(isSubscribed, newEmail);
+        renderFeedback(isSubscribed, userEmail);
+        dialog.showModal();
         return;
     }
 
-    iscritti.push(newEmail);
+    iscritti.push(userEmail);
     saveSubscription(iscritti);
 
-    renderFeedback(isSubscribed, newEmail);
+    renderFeedback(isSubscribed, userEmail);
     dialog.showModal();
     event.target.reset();
 }
 
-function renderFeedback(boolean, input) {
-    let html = document.getElementById("newsletterSuccessDialog");
-    if (boolean === false) {
-        html.innerHTML = `               <div class="dialog-header">
-                    <h2 class="dialog-title" id="newsletterSuccessTitle">
-                         <i class="bi bi-check-circle-fill me-2" aria-hidden="true" class="bg-success"></i>Sei nella
-                         lista
-                         dei tavoli!
-                    </h2>
-               </div>
-               <div class="dialog-body">
-                    <p>
-                         Abbiamo registrato <strong id="newsletterSuccessEmail">${input}</strong>.
-                         Da ora riceverai in anteprima tornei, serate a tema e i nuovi arrivi della ludoteca.
-                    </p>
-                    <p class="mb-0">Al massimo una email a settimana, e ti cancelli quando vuoi.</p>
-                    <p class="dialog-note">Progetto dimostrativo: nessuna email verrà davvero inviata.</p>
-               </div>
-               <div class="dialog-footer">
-                    <button type="button" class="btn btn-outline-secondary" commandfor="newsletterSuccessDialog"
-                         command="close">Chiudi</button>
-                    <a href="./prenota.html" class="btn btn-warning fw-semibold">Prenota un tavolo</a>
-               </div>`;
-    } else {
-        html.innerHTML = `          <div class="dialog-header">
-               <h2 class="dialog-title" id="newsletterErrorTitle">
-                    <i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i>Iscrizione non riuscita
+function normalizeEmail(email) {
+    if (!email || typeof email !== 'string') {
+        return '';
+    }
+
+    /* rimuove gli spazi vuoti */
+    email = email.trim();
+
+    /* converte l'intero indirizzo in minuscolo */
+    email = email.toLowerCase();
+
+    return email;
+}
+
+function renderFeedback(giaIscritto, input) {
+    let dialog = document.getElementById("newsletterDialog");
+    if (giaIscritto === false) {
+        dialog.innerHTML = `               <div class="dialog-header">
+               <h2 class="dialog-title" id="dialog-title">
+                    <i class="bi bi-check-circle-fill me-2" aria-hidden="true"></i>Sei nella lista dei tavoli!
                </h2>
+               <button type="button" class="btn-close" commandfor="newsletterDialog" command="close"
+                    aria-label="Chiudi"></button>
           </div>
           <div class="dialog-body">
-               <p id="newsletterErrorMessage" class="mb-0">
-                    "Questo indirizzo:<strong id="newsletterSuccessEmail">${input}</strong>. E' già nella nostra lista: riceverai le prossime novità senza fare altro."
+               <p>
+                    Abbiamo registrato <strong>${input}</strong>.
+                    Da ora riceverai in anteprima tornei, serate a tema e i nuovi arrivi della ludoteca.
+               </p>
+               <p class="mb-0">Al massimo una email a settimana, e ti cancelli quando vuoi.</p>
+               <p class="dialog-note">Progetto dimostrativo: nessuna email verrà davvero inviata.</p>
+          </div>
+          <div class="dialog-footer">
+               <button type="button" class="btn btn-outline-secondary" commandfor="newsletterDialog"
+                    command="close">Chiudi</button>
+               <a href="./prenota.html" class="btn btn-warning fw-semibold">Prenota un tavolo</a>
+          </div>`;
+    } else {
+        dialog.innerHTML = `          <div class="dialog-header">
+               <h2 class="dialog-title" id="dialog-title">
+                    <i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i>Iscrizione non riuscita
+               </h2>
+               <button type="button" class="btn-close" commandfor="newsletterDialog" command="close"
+                    aria-label="Chiudi"></button>
+          </div>
+          <div class="dialog-body">               
+               <p class="mb-0">
+                Questo indirizzo: ${input} è già nella nostra lista: riceverai le prossime novità senza fare altro.
                </p>
           </div>
           <div class="dialog-footer">
-               <button type="button" class="btn btn-warning fw-semibold" commandfor="newsletterErrorDialog"
-                    command="close">Chiudi</button>
+               <button type="button" class="btn btn-warning fw-semibold" commandfor="newsletterDialog"
+                    command="close">Correggi l'email</button>
           </div>`;
     }
 }
@@ -297,9 +313,14 @@ function saveSubscription(list) {
 }
 
 function loadSubscriptions() {
-    const datoSerializzato = localStorage.getItem("subscriptions");
-    const parsedData = JSON.parse(datoSerializzato);
-    return parsedData;
+    const datoserializzato = localStorage.getItem("subscriptions");
+
+    if (!datoserializzato) return null;
+    try {
+        return JSON.parse(datoserializzato);
+    } catch (e) {
+        return null;
+    }
 }
 
 /* Page init */
@@ -320,3 +341,12 @@ if (recensioni === null) {
 
 renderReview(recensioni);
 renderMoreReviews(recensioni);
+
+/* Carica gli iscritti alla newsletter */
+
+let iscritti = loadSubscriptions();
+
+if (iscritti === null) {
+    iscritti = [...defaultIscritti];
+    saveSubscription(iscritti);
+} 

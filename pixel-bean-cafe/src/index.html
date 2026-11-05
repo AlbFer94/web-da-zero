@@ -553,7 +553,7 @@
                                    <input type="email" id="newsletter-email" name="email" class="form-control"
                                         placeholder="La tua email" autocomplete="email" required>
                                    <button type="submit" class="btn btn-warning fw-semibold"
-                                        commandfor="newsletterSuccessDialog" command="show-modal">Iscriviti</button>
+                                        commandfor="newsletterDialog" command="show-modal">Iscriviti</button>
                               </div>
                               <!-- il JS scrive il messaggio di conferma o di errore -->
                               <div id="newsletter-feedback" class="footer-text small mt-2 mb-0" aria-live="polite">
@@ -574,8 +574,7 @@
      </footer>
      <!-- Dialog: iscrizione riuscita -->
      <div id="modal">
-          <dialog class="dialog" id="newsletterSuccessDialog" aria-labelledby="newsletterSuccessTitle"
-               data-bs-theme="dark">
+          <dialog class="dialog" id="newsletterDialog" aria-labelledby="dialog-title" data-bs-theme="dark">
           </dialog>
      </div>
      <!-- Bootstrap 5.3 JS Bundle -->

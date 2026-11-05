@@ -214,8 +214,5 @@ export const recensioni = [
     }
 ];
 
-// ==========================================
-// 5. indirizzi email per gli iscritti alla NewsLetter
-// ==========================================
 
-export const iscritti = [];
+export let iscritti = [];
