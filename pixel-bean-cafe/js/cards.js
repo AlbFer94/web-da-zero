@@ -281,9 +281,8 @@ function renderFeedback(giaIscritto, input) {
                <p class="dialog-note">Progetto dimostrativo: nessuna email verrà davvero inviata.</p>
           </div>
           <div class="dialog-footer">
-               <button type="button" class="btn btn-outline-secondary" commandfor="newsletterDialog"
+               <button type="button" class="btn btn-warning" commandfor="newsletterDialog"
                     command="close">Chiudi</button>
-               <a href="./prenota.html" class="btn btn-warning fw-semibold">Prenota un tavolo</a>
           </div>`;
     } else {
         dialog.innerHTML = `          <div class="dialog-header">
@@ -322,6 +321,10 @@ function loadSubscriptions() {
         return null;
     }
 }
+
+/* gestione button prenota */
+
+
 
 /* Page init */
 
