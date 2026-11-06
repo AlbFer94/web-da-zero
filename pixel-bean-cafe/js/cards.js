@@ -336,13 +336,17 @@ function onBookingSubmit(event) {
     const ospitiField = document.getElementById("bookingOspiti");
     const dataOraField = document.getElementById("bookingDataOra");
     const giocoField = document.getElementById("bookingGioco");
+    const bookingDialog = document.getElementById("bookingDialog");
 
     const nome = nomeField.value;
     const email = emailField.value;
     const telefono = telefonoField.value;
     const ospiti = Number(ospitiField.value);
     const dataPrenotazione = new Date(dataOraField.value); // converto il valore dell'input in un Date
-    const gioco = giocoField.value;
+    const gioco = giocoField.options[giocoField.selectedIndex].text;
+
+
+    let giaPrenotato = false;
 
     const newBooking = {
         nome: nome,
@@ -355,6 +359,12 @@ function onBookingSubmit(event) {
 
     prenotazioni.push(newBooking);
 
+    // Oggetto con i dati per riempire i placeholder [data-booking] nel template del dialog
+    const datiDaMostrare = {
+        ...newBooking,
+        dataOra: newBooking.data
+    };
+
     event.target.reset();
 
     // Chiude il modale Bootstrap
@@ -366,8 +376,85 @@ function onBookingSubmit(event) {
         }
     }
 
+    bookingDialog.innerHTML = giaPrenotato ? getBookingRejectedHtml() : getBookingSuccessHtml();
+
+    // riempie solo i segnaposto presenti nel template scelto, sempre come testo
+    for (const campo of bookingDialog.querySelectorAll("[data-booking]")) {
+        campo.textContent = datiDaMostrare[campo.dataset.booking] ?? "";
+    }
+
+
+    bookingDialog.showModal();
 
 }
+
+function getBookingSuccessHtml() {
+    return `
+          <div class="dialog-header">
+               <h2 class="dialog-title" id="booking-dialog-title">
+                    <i class="bi bi-check-circle-fill me-2" aria-hidden="true"></i>Tavolo prenotato!
+               </h2>
+               <button type="button" class="btn-close" commandfor="bookingDialog" command="close"
+                    aria-label="Chiudi"></button>
+          </div>
+          <div class="dialog-body">
+               <p>
+                    Grazie <strong data-booking="nome"></strong>, il tuo tavolo è confermato per
+                    <strong data-booking="dataOra"></strong>.
+               </p>
+               <dl class="footer-hours mb-3">
+                    <dt>Ospiti</dt>
+                    <dd data-booking="ospiti"></dd>
+                    <dt>Gioco da preparare</dt>
+                    <dd data-booking="gioco"></dd>
+               </dl>
+               <p class="mb-0">
+                    Troverai il tavolo apparecchiato e la scatola già sul feltro. Ti aspettiamo:
+                    il tavolo resta tuo per 15 minuti dall'orario indicato.
+               </p>
+               <p class="dialog-note">Progetto dimostrativo: nessuna prenotazione verrà davvero registrata.</p>
+          </div>
+          <div class="dialog-footer">
+               <button type="button" class="btn btn-warning fw-semibold" commandfor="bookingDialog"
+                    command="close">Perfetto, a presto</button>
+          </div>`;
+}
+
+function getBookingRejectedHtml() {
+    return `
+          <div class="dialog-header">
+               <h2 class="dialog-title" id="booking-dialog-title">
+                    <i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i>Prenotazione già presente
+               </h2>
+               <button type="button" class="btn-close" commandfor="bookingDialog" command="close"
+                    aria-label="Chiudi"></button>
+          </div>
+          <div class="dialog-body">
+               <p>
+                    Abbiamo già una prenotazione a nome di <strong data-booking="email"></strong> per
+                    <strong data-booking="dataOra"></strong>, quindi non ne abbiamo registrata una nuova.
+               </p>
+               <p>
+                    Vuoi cambiare orario, numero di ospiti o cancellare? Dal sito non è possibile modificare
+                    una prenotazione: scrivici o chiamaci e ci pensa il nostro staff.
+               </p>
+               <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                         <i class="bi bi-envelope me-2 text-warning" aria-hidden="true"></i>
+                         <span class="visually-hidden">Email: </span>ciao@pixelandbean.it
+                    </li>
+                    <li>
+                         <i class="bi bi-telephone me-2 text-warning" aria-hidden="true"></i>
+                         <span class="visually-hidden">Telefono: </span>+39 02 8945 2201
+                    </li>
+               </ul>
+          </div>
+          <div class="dialog-footer">
+               <button type="button" class="btn btn-warning fw-semibold" commandfor="bookingDialog"
+                    command="close">Ho capito</button>
+          </div>`;
+}
+
 
 
 /* Page init */
