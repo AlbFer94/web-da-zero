@@ -214,5 +214,15 @@ export const recensioni = [
     }
 ];
 
+// ================================================
+// 5. Dati per la gestione iscritti alla Newsletter
+// ================================================
 
 export let iscritti = [];
+
+// ==========================================
+// 6. Dati per la gestione delle prenotazioni
+// ==========================================
+
+export let prenotazioni = [];
+

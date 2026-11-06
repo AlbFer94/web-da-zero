@@ -1,4 +1,4 @@
-import { ludotecaSteps, carouselGames, menuItems, recensioni as defaultReviews, iscritti as defaultIscritti } from "./data.js";
+import { ludotecaSteps, carouselGames, menuItems, recensioni as defaultReviews, iscritti as defaultIscritti, prenotazioni as defaultPrenotazioni, prenotazioni } from "./data.js";
 /* Gestione cards Informative (Ludoteca) */
 
 function renderSteps(listaSteps) {
@@ -322,8 +322,52 @@ function loadSubscriptions() {
     }
 }
 
-/* gestione button prenota */
+/* gestione form di prenotazioni */
 
+const formPrenotazioni = document.getElementById("formPrenotazione");
+formPrenotazioni.addEventListener("submit", onBookingSubmit);
+
+function onBookingSubmit(event) {
+    event.preventDefault();
+
+    const nomeField = document.getElementById("bookingNome");
+    const emailField = document.getElementById("bookingEmail");
+    const telefonoField = document.getElementById("bookingTelefono");
+    const ospitiField = document.getElementById("bookingOspiti");
+    const dataOraField = document.getElementById("bookingDataOra");
+    const giocoField = document.getElementById("bookingGioco");
+
+    const nome = nomeField.value;
+    const email = emailField.value;
+    const telefono = telefonoField.value;
+    const ospiti = Number(ospitiField.value);
+    const dataPrenotazione = new Date(dataOraField.value); // converto il valore dell'input in un Date
+    const gioco = giocoField.value;
+
+    const newBooking = {
+        nome: nome,
+        email: email,
+        tel: telefono,
+        ospiti: ospiti,
+        data: dataPrenotazione.toLocaleString("it-IT"), //gestisco il Date con localeString per stampare la data in formato italiano
+        gioco: gioco
+    };
+
+    prenotazioni.push(newBooking);
+
+    event.target.reset();
+
+    // Chiude il modale Bootstrap
+    const modalEl = document.getElementById("prenotazioniModal");
+    if (window.bootstrap && modalEl) {
+        const modalInstance = bootstrap.Modal.getInstance(modalEl);
+        if (modalInstance) {
+            modalInstance.hide();
+        }
+    }
+
+
+}
 
 
 /* Page init */
