@@ -1,4 +1,4 @@
-import { ludotecaSteps, carouselGames, menuItems, recensioni as defaultReviews, iscritti as defaultIscritti, prenotazioni as defaultPrenotazioni, prenotazioni } from "./data.js";
+import { ludotecaSteps, carouselGames, menuItems, recensioni as defaultReviews, iscritti as defaultIscritti, prenotazioni as defaultPrenotazioni } from "./data.js";
 /* Gestione cards Informative (Ludoteca) */
 
 function renderSteps(listaSteps) {
@@ -152,11 +152,11 @@ function saveReviewsToStorage(list) {
 }
 
 function loadReviews() {
-    const datoserializzato = localStorage.getItem("reviews");
+    const datoSerializzato = localStorage.getItem("reviews");
 
-    if (!datoserializzato) return null;
+    if (!datoSerializzato) return null;
     try {
-        return JSON.parse(datoserializzato);
+        return JSON.parse(datoSerializzato);
     } catch (e) {
         return null;
     }
@@ -312,11 +312,11 @@ function saveSubscription(list) {
 }
 
 function loadSubscriptions() {
-    const datoserializzato = localStorage.getItem("subscriptions");
+    const datoSerializzato = localStorage.getItem("subscriptions");
 
-    if (!datoserializzato) return null;
+    if (!datoSerializzato) return null;
     try {
-        return JSON.parse(datoserializzato);
+        return JSON.parse(datoSerializzato);
     } catch (e) {
         return null;
     }
@@ -359,7 +359,7 @@ function onBookingSubmit(event) {
     if (!giaPrenotato) {
 
         prenotazioni.push(newBooking);
-
+        saveBooking(prenotazioni);
     }
 
 
@@ -460,7 +460,23 @@ function getBookingRejectedHtml() {
           </div>`;
 }
 
+/* gestione localStorage delle prenotazioni */
 
+function saveBooking(list) {
+    const datoSerializzato = JSON.stringify(list);
+    localStorage.setItem("prenotazioni", datoSerializzato);
+}
+
+function loadBookings() {
+    const datoSerializzato = localStorage.getItem("prenotazioni");
+
+    if (!datoSerializzato) return null;
+    try {
+        return JSON.parse(datoSerializzato);
+    } catch (e) {
+        return null;
+    }
+}
 
 /* Page init */
 
@@ -488,4 +504,13 @@ let iscritti = loadSubscriptions();
 if (iscritti === null) {
     iscritti = [...defaultIscritti];
     saveSubscription(iscritti);
-} 
+}
+
+/* Carica le prenotazioni dal localStorage */
+
+let prenotazioni = loadBookings();
+
+if (prenotazioni === null) {
+    prenotazioni = [...defaultPrenotazioni];
+    saveBooking(prenotazioni);
+}
