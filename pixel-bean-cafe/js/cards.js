@@ -345,9 +345,6 @@ function onBookingSubmit(event) {
     const dataPrenotazione = new Date(dataOraField.value); // converto il valore dell'input in un Date
     const gioco = giocoField.options[giocoField.selectedIndex].text;
 
-
-    let giaPrenotato = false;
-
     const newBooking = {
         nome: nome,
         email: email,
@@ -357,7 +354,14 @@ function onBookingSubmit(event) {
         gioco: gioco
     };
 
-    prenotazioni.push(newBooking);
+    const giaPrenotato = prenotazioni.some(element => element.email === newBooking.email && element.data === newBooking.data);
+
+    if (!giaPrenotato) {
+
+        prenotazioni.push(newBooking);
+
+    }
+
 
     // Oggetto con i dati per riempire i placeholder [data-booking] nel template del dialog
     const datiDaMostrare = {
@@ -376,6 +380,7 @@ function onBookingSubmit(event) {
         }
     }
 
+    //restituisce il template corretto con la valorizzazione di giaPrenotato(true/false)
     bookingDialog.innerHTML = giaPrenotato ? getBookingRejectedHtml() : getBookingSuccessHtml();
 
     // riempie solo i segnaposto presenti nel template scelto, sempre come testo
