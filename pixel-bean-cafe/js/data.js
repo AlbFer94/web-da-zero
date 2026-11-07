@@ -34,7 +34,7 @@ export const carouselGames = [
         title: "Catan",
         badge: "Strategia & Commercio",
         description: "Commercia, costruisci ed espandi il tuo insediamento davanti a una tazza di specialty coffee.",
-        image: "../assets/img/catan.jpg",
+        image: "../assets/img/catan.webp",
         alt: "Clienti che giocano a Catan al bistrò"
     },
     {
@@ -42,7 +42,7 @@ export const carouselGames = [
         title: "Wingspan",
         badge: "Engine Building & Relax",
         description: "Attira le specie più affascinanti nella tua riserva naturale sorseggiando un rilassante matcha latte.",
-        image: "../assets/img/wingspan.jpg",
+        image: "../assets/img/wingspan.webp",
         alt: "Clienti che giocano a Wingspan al bistrò"
     },
     {
@@ -50,7 +50,7 @@ export const carouselGames = [
         title: "Ticket to Ride",
         badge: "Avventura su Rotaia",
         description: "Collega le capitali su rotaia e completa i tuoi itinerari segreti tra risate e snack salva-carte.",
-        image: "../assets/img/ticket-to-ride.jpg",
+        image: "../assets/img/ticket-to-ride.webp",
         alt: "Clienti che giocano a Ticket to Ride al bistrò"
     },
     {
@@ -58,7 +58,7 @@ export const carouselGames = [
         title: "Terraforming Mars",
         badge: "Fantascienza & Strategia",
         description: "Guida una corporazione per rendere abitabile il pianeta rosso in una serata di pura strategia ed espresso d'autore.",
-        image: "../assets/img/terraforming-mars.jpg",
+        image: "../assets/img/terraforming-mars.webp",
         alt: "Clienti che giocano a Terraforming Mars al bistrò"
     },
     {
@@ -66,7 +66,7 @@ export const carouselGames = [
         title: "Codenames",
         badge: "Party Game a Squadre",
         description: "Sfida gli amici a colpi di intuizione e parole chiave nel party game a squadre più divertente e frenetico.",
-        image: "../assets/img/codenames.jpg",
+        image: "../assets/img/codenames.webp",
         alt: "Clienti che giocano a Codenames al bistrò"
     }
 ];

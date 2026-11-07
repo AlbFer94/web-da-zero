@@ -58,7 +58,7 @@ body {
 
 #hero {
   background: var(--gradient-bg-main),
-    url('../assets/img/cafe-hero.jpg') center / cover no-repeat;
+    url('../assets/img/cafe-hero.webp') center / cover no-repeat;
   min-height: 80vh;
   display: flex;
   align-items: center;
