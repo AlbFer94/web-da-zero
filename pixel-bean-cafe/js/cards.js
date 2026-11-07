@@ -344,10 +344,11 @@ function onBookingSubmit(event) {
     const ospiti = Number(ospitiField.value);
     const dataPrenotazione = new Date(dataOraField.value); // converto il valore dell'input in un Date
     const gioco = giocoField.options[giocoField.selectedIndex].text;
+    const userEmail = normalizeEmail(email);
 
     const newBooking = {
         nome: nome,
-        email: email,
+        email: userEmail,
         tel: telefono,
         ospiti: ospiti,
         data: dataPrenotazione.toLocaleString("it-IT"), //gestisco il Date con localeString per stampare la data in formato italiano
