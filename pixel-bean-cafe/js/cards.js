@@ -325,7 +325,15 @@ function loadSubscriptions() {
 /* gestione form di prenotazioni */
 
 const formPrenotazioni = document.getElementById("formPrenotazione");
-formPrenotazioni.addEventListener("submit", onBookingSubmit);
+const dataOraInput = document.getElementById("bookingDataOra");
+
+if (dataOraInput) {
+    const now = new Date();
+    // Calcola l'offset locale per non usare il fuso di toISOString e non mostra i secondi
+    const localNow = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+    dataOraInput.min = localNow.toISOString().slice(0, 16);
+
+} formPrenotazioni.addEventListener("submit", onBookingSubmit);
 
 function onBookingSubmit(event) {
     event.preventDefault();
@@ -351,7 +359,13 @@ function onBookingSubmit(event) {
         email: userEmail,
         tel: telefono,
         ospiti: ospiti,
-        data: dataPrenotazione.toLocaleString("it-IT"), //gestisco il Date con localeString per stampare la data in formato italiano
+        data: dataPrenotazione.toLocaleString("it-IT", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        }), // Formatta data e ora senza mostrare i secondi
         gioco: gioco
     };
 
